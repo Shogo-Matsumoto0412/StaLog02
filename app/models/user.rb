@@ -9,4 +9,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   mount_uploader :profile_image, ProfileImageUploader
+
+  def liked_by?(post_id)
+    likes.where(post_id: post_id).exists?
+  end
 end
