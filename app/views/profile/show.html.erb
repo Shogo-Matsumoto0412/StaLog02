@@ -1,3 +1,15 @@
 <img src=<%= @user.profile_image %> class = "icon_image">
 <h1><%= @user.name %></h1>
 <p><%= @user.profile_text %></p>
+<%= render 'relationships/follow_button', user: @user %>
+<p>フォロー<%= @user.followings.count %></p>
+<p>フォロワー<%= @user.followers.count %></p>
+<% @user.posts.order(created_at: :desc).each do |post| %>
+    <div>
+        <img src="<%= post.user.profile_image%>" class="post_icon_image">
+        <%= post.user.name%>
+        <%= post.post_content %>
+        <%= post.field_content %>
+        <%= post.count_hour %>
+    </div>
+<% end %>
