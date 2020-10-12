@@ -70,3 +70,6 @@ gem 'devise'
 
 # Carrierwave
 gem 'carrierwave'
+
+# FontAwesome
+gem 'font-awesome-sass', '~> 5.9.0'
