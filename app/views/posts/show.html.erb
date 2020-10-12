@@ -2,3 +2,13 @@
 <h1><%= @post.user.name %></h1>
 <p><%= @post.field_content%>　<%= @post.count_hour %>時間</p>
 <p><%= @post.post_content%></p>
+<h2>コメントする</h2>
+<%= form_with model:[@post, @comment], method: :post do |f| %>
+    <%= f.text_area :content, placeholder: "コメントする" %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.submit "送信", class: "btn btn-primary"%>
+<% end %>
+<h2>コメント一覧</h2>
+<% @comments.each do |comment| %>
+    <%= comment.content %>
+<% end %>
