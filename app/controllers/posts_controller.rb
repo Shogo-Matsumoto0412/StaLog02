@@ -21,6 +21,10 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @post = Post.find_by(id: params[:id])
+  end
+
   private
   def post_params
     params.require(:post).permit(:post_content, :field_content, :count_hour).merge(user_id: current_user.id)
