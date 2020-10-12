@@ -67,3 +67,6 @@ gem 'jquery-rails'
 
 # Devise
 gem 'devise'
+
+# Carrierwave
+gem 'carrierwave'
