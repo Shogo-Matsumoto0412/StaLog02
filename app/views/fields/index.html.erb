@@ -1,2 +1,3 @@
-<h1>Fields#index</h1>
-<p>Find me in app/views/fields/index.html.erb</p>
+<% @fields.each do |field| %>
+    <%= link_to field.title, field_path(field.id) %><br>
+<% end %>
