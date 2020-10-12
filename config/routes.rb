@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'fields/index'
+  resources :fields, only: [:index, :new, :create, :show, :destroy]
   resources :profile, only: [:show]
   devise_for :users
   root 'posts#index'
