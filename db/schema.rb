@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_12_053122) do
+ActiveRecord::Schema.define(version: 2020_10_12_055806) do
 
   create_table "fields", force: :cascade do |t|
     t.string "title"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 2020_10_12_053122) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_fields_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "post_content"
+    t.integer "user_id"
+    t.string "field_content"
+    t.float "count_hour"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
