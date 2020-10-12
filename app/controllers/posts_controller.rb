@@ -23,6 +23,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
+    @comments = @post.comments
+    @comment = current_user.comments.new
   end
 
   private
