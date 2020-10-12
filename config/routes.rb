@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :fields, only: [:index, :new, :create, :show, :destroy]
   resources :profile, only: [:show]
   devise_for :users
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create]
+  end
   root 'posts#index'
 
   resources :relationships, only: [:create, :destroy]
