@@ -4,5 +4,8 @@
     <%= post.post_content%>
     <%= post.field_content %>
     <%= post.count_hour%>時間
+    <%= link_to "/posts/#{post.id}", method: :delete do %>
+        <i class="fas fa-trash-alt"></i>
+    <% end %>
     <br>
 <% end %>
