@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :profile, only: [:show]
   devise_for :users
   resources :posts do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
   root 'posts#index'
 
