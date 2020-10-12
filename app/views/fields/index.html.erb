@@ -1,3 +1,7 @@
 <% @fields.each do |field| %>
-    <%= link_to field.title, field_path(field.id) %><br>
+    <%= link_to field.title, field_path(field.id) %>
+    <%= link_to "/fields/#{field.id}", method: :delete do %>
+        <i class="fas fa-trash-alt"></i>
+    <% end %>
+    <br>
 <% end %>
