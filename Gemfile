@@ -73,3 +73,6 @@ gem 'carrierwave'
 
 # FontAwesome
 gem 'font-awesome-sass', '~> 5.9.0'
+
+# Ransack
+gem 'ransack'
