@@ -1,15 +1,17 @@
 <% @fields.each do |field| %>
-    <% if Post.find_by(field_content: field.title) %>
-        <%= link_to field.title, field_path(field.id) %>
-        <%= link_to "/fields/#{field.id}", method: :delete do %>
-            <i class="fas fa-trash-alt"></i>
+    <% if field.user_id == current_user.id %>
+        <% if Post.find_by(field_content: field.title) %>
+            <%= link_to field.title, field_path(field.id) %>
+            <%= link_to "/fields/#{field.id}", method: :delete do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %>
+            <br>
+        <% else %>
+            <%= field.title%>
+            <%= link_to "/fields/#{field.id}", method: :delete do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %>
+            <br>
         <% end %>
-        <br>
-    <% else %>
-        <%= field.title%>
-        <%= link_to "/fields/#{field.id}", method: :delete do %>
-            <i class="fas fa-trash-alt"></i>
-        <% end %>
-        <br>
     <% end %>
 <% end %>
