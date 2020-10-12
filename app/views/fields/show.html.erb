@@ -1,0 +1,7 @@
+<h1><%= @post.field_content %></h1>
+<% @posts.each do |post| %>
+    <p><%= post.created_at.to_date %></p>
+    <p><%= post.count_hour %>時間</p>
+    <p><%= post.post_content %></p>
+<% end %>
+<p>合計<%= @count_hour %>時間</p>
