@@ -1,6 +1,6 @@
 <% @fields.each do |field| %>
     <% if field.user_id == current_user.id %>
-        <% if Post.find_by(field_content: field.title) %>
+        <% if current_user.posts.find_by(field_content: field.title) %>
             <%= link_to field.title, field_path(field.id) %>
             <%= link_to "/fields/#{field.id}", method: :delete do %>
                 <i class="fas fa-trash-alt"></i>
