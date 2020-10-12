@@ -6,6 +6,6 @@
         <p><%= post.post_content %></p>
     <% end %>
     <% if post.created_at.to_date == @post.created_at.to_date %>
-        <p class="count_hour"><%= @count_hour %>時間</p>
+        <p class="count_hour">日付<%= @count_hour.keys[0] %>　合計<%= @count_hour.values[0].floor(1) %>時間</p>
     <% end %>
 <% end %>
