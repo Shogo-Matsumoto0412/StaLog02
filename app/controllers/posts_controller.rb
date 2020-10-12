@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @fields = Field.all
+    @fields = current_user.fields.all
   end
 
   def create
