@@ -1,9 +1,9 @@
 <h1><%= @post.field_content %></h1>
 <% @posts.each do |post| %>
     <% if post.user_id == current_user.id %>
-        <p><%= post.created_at.to_date %></p>
-        <p><%= post.count_hour %>時間</p>
         <p><%= post.post_content %></p>
+        <p><%= post.count_hour %>時間</p>
+        <p><%= post.created_at.to_date %></p>
     <% end %>
     <% if post.created_at.to_date == @post.created_at.to_date %>
         <p class="count_hour">日付<%= @count_hour.keys[0] %>　合計<%= @count_hour.values[0].floor(1) %>時間</p>
