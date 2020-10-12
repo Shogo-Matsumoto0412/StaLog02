@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :create]
   def index
     @search = Post.ransack(params[:q])
-    @posts = @search.result
+    @posts = @search.result.order(created_at: :desc)
   end
 
   def new
