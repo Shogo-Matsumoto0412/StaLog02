@@ -13,6 +13,13 @@ class FieldsController < ApplicationController
     redirect_to fields_path
   end
 
+  def show
+    @field = Field.find_by(id: params[:id])
+    @post = Post.find_by(field_content: @field.title)
+    @posts = Post.where(field_content: @field.title)
+    @count_hour = @posts.sum(:count_hour)
+  end
+
   def destroy
     @field = Field.find_by(id: params[:id])
     @field.destroy
