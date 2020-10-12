@@ -6,4 +6,4 @@
         <p><%= post.post_content %></p>
     <% end %>
 <% end %>
-<p>合計<%= @count_hour %>時間</p>
+<p>合計<%= @count_hour.floor(1) %>時間</p>
