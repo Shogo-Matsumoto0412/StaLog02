@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'profile/show'
+  resources :profile, only: [:show]
   devise_for :users
   root 'posts#index'
 end
