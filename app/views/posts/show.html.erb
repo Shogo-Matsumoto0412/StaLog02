@@ -11,4 +11,9 @@
 <h2>コメント一覧</h2>
 <% @comments.each do |comment| %>
     <%= comment.content %>
+    <% if comment.user_id == current_user.id %>
+        <%= link_to "/posts/#{@post.id}/comments/#{comment.id}", method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+        <% end %>
+    <% end %>
 <% end %>
