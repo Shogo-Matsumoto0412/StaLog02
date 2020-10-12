@@ -1,0 +1,6 @@
+<%= form_with model: @post do |f| %>
+    <%= f.text_area :post_content %>
+    <%= f.select :field_content, @fields.map{|field|[field.title, field.title]}%>
+    <%= f.number_field :count_hour, step: '0.1' %>時間
+    <%= f.submit "投稿", class: "btn btn-primary"%>
+<% end %>
