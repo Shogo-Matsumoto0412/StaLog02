@@ -1,16 +1,18 @@
 <% @posts.each do |post| %>
-    <img src="<%= post.user.profile_image%>" class="post_icon_image">
-    <%= post.user.name%>
-    <%= post.post_content%>
-    <%= post.field_content %>
-    <%= post.count_hour%>時間
-    <% if current_user.liked_by?(post.id) %>
-        <%= link_to 'いいねを外す', destroy_like_path(post.id), method: :DELETE, remoto: true %><%= post.likes.count %>
-    <% else %>
-        <%= link_to 'いいね', create_like_path(post.id), method: :POST, remoto: true %><%= post.likes.count %>
-    <% end %>
-    <%= link_to "/posts/#{post.id}", method: :delete do %>
-        <i class="fas fa-trash-alt"></i>
-    <% end %>
-    <br>
+    <div id="post_<%= post.id %>">
+        <img src="<%= post.user.profile_image%>" class="post_icon_image">
+        <%= post.user.name%>
+        <%= post.post_content%>
+        <%= post.field_content %>
+        <%= post.count_hour%>時間
+        <% if current_user.liked_by?(post.id) %>
+            <%= link_to 'いいねを外す', destroy_like_path(post.id), method: :DELETE, remoto: true %><%= post.likes.count %>
+        <% else %>
+            <%= link_to 'いいね', create_like_path(post.id), method: :POST, remoto: true %><%= post.likes.count %>
+        <% end %>
+        <%= link_to "/posts/#{post.id}", method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <br>
+    </div>
 <% end %>
