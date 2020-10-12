@@ -6,9 +6,15 @@
         <%= post.field_content %>
         <%= post.count_hour%>時間
         <% if current_user.liked_by?(post.id) %>
-            <%= link_to 'いいねを外す', destroy_like_path(post.id), method: :DELETE, remoto: true %><%= post.likes.count %>
+            <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
+                <i class="fa fa-heart unlike-btn"></i>
+            <% end %>
+            <%= post.likes.count %>
         <% else %>
-            <%= link_to 'いいね', create_like_path(post.id), method: :POST, remoto: true %><%= post.likes.count %>
+            <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
+                <i class="fa fa-heart like-btn"></i>
+            <% end %>
+            <%= post.likes.count %>
         <% end %>
         <%= link_to "/posts/#{post.id}", method: :delete do %>
             <i class="fas fa-trash-alt"></i>
