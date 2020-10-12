@@ -7,3 +7,13 @@
     object-fit: cover;
     //タテヨコ比を変えないままトリミング
 }
+
+.post_icon_image{
+    width: 100px;
+    height: 100px;
+    //サイズ指定
+    border-radius: 50px;
+    //画像を丸くする
+    object-fit: cover;
+    //タテヨコ比を変えないままトリミング
+}
