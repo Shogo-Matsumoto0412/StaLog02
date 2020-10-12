@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @search = Post.ransack(params[:q])
+    @posts = @search.result
   end
 
   def new
