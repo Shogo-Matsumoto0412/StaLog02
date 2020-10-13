@@ -1,3 +1,12 @@
-.count_hour:not(:last-child){
-    display: none;
+// .count_hour:not(:last-child){
+//     display: none;
+// }
+
+.field_name{
+    text-align: center
+}
+
+.field_show{
+    display: flex;
+    justify-content: space-around;
 }
