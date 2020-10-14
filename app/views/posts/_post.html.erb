@@ -3,7 +3,12 @@
     <%= post.user.name%>
 <% end %>
 <%= link_to post.post_content, post_path(post.id) %>
-<%= post.field_content %>
+<% if post.user.id == current_user.id%>
+    <% @field = Field.find_by(title: post.field_content) %>
+    <%= link_to post.field_content, field_path(@field.id) %>
+<% else %>
+    <%= post.field_content %>
+<% end %>
 <%= post.count_hour%>時間
 <% if current_user.liked_by?(post.id) %>
     <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
