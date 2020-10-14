@@ -1,5 +1,7 @@
-<img src="<%= post.user.profile_image%>" class="post_icon_image">
-<%= post.user.name%>
+<%= link_to profile_path(post.user.id) do %>
+    <img src="<%= post.user.profile_image%>" class="post_icon_image">
+    <%= post.user.name%>
+<% end %>
 <%= link_to post.post_content, post_path(post.id) %>
 <%= post.field_content %>
 <%= post.count_hour%>時間
