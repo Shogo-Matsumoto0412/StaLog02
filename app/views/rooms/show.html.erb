@@ -8,6 +8,11 @@
             <img src="<%= m.user.profile_image %>" class="post_icon_image" >
             <%= m.user.name %>
             <%= m.message %>
+            <% if m.user.id == current_user.id%>
+                <%= link_to "/messages/#{m.id}", method: :delete do %>
+                    <i class="fas fa-trash-alt"></i>
+                <% end %>
+            <% end %>
         <% end %>
     <% end %>
 </div>
