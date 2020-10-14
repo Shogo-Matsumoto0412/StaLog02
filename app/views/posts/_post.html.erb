@@ -11,6 +11,7 @@
     <% end %>
 <% else %>
     <%= post.field_content %>
+    <%= post.count_hour%>時間
 <% end %>
 <% if current_user.liked_by?(post.id) %>
     <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
