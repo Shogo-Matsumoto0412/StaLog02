@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :fields, only: [:index, :new, :create, :show, :destroy]
   resources :profile, only: [:show]
-  resources :messages, only: [:create]
+  resources :messages, only: [:create, :destroy]
   resources :rooms, only: [:create,:show]
   devise_for :users
   resources :posts do
