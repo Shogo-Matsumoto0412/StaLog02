@@ -1,9 +1,11 @@
 class User < ApplicationRecord
 
-  has_many :posts
-  has_many :fields
-  has_many :likes
-  has_many :comments
+  has_many :posts, dependent: :destroy
+  has_many :fields, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
