@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   def index
     @search = Post.ransack(params[:q])
     @posts = @search.result.order(created_at: :desc)
+    @search2 = Post.ransack(params[:q])
+    @f = @search2.result.order(created_at: :desc)
     @field = Field.find_by(id: params[:id])
   end
 
