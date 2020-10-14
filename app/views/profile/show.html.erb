@@ -4,6 +4,20 @@
 <%= render 'relationships/follow_button', user: @user %>
 <p>フォロー<%= @user.followings.count %></p>
 <p>フォロワー<%= @user.followers.count %></p>
+<% unless @user.id == current_user.id %>
+    <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
+        <% if @isRoom == true %>
+            <%= link_to "チャットへ", room_path(@roomId), class: "btn btn-primary" %>
+        <% else %>
+            <%= form_with model: @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                    <%= e.hidden_field :user_id, value: @user.id %>
+                <% end %>
+                <%= f.submit "チャットを始める", class: "btn btn-primary" %>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>
 <% @user.posts.order(created_at: :desc).each do |post| %>
     <div>
         <img src="<%= post.user.profile_image%>" class="post_icon_image">
