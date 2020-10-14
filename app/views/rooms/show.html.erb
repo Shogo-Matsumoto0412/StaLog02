@@ -1,0 +1,16 @@
+<% @entries.each do |e| %>
+    <img src="<%= e.user.profile_image %>" class="icon_image" >
+    <%= e.user.name %>
+<% end %>
+<% if @messages.present? %>
+    <% @messages.each do |m| %>
+        <img src="<%= m.user.profile_image %>" class="post_icon_image" >
+        <%= m.user.name %>
+        <%= m.message %>
+    <% end %>
+<% end %>
+<%= form_with model: @message do |f| %>
+    <%= f.text_field :message, placeholder: "メッセージを入力して下さい" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "投稿", class: "btn btn-primary" %>
+<% end %>
