@@ -21,16 +21,28 @@
 <%= month_calendar events: @posts do |date, posts| %>
     <%= date.day %>
     <% posts.each do |post| %>
-        <%= post.field_content %>
-        <%= post.count_hour %>
+        <% @field = Field.find_by(title: post.field_content) %>
+        <%= link_to post.field_content, field_path(@field.id) %>
+        <%= post.count_hour %>時間
     <% end %>
 <% end %>
 <% @user.posts.order(created_at: :desc).each do |post| %>
     <div>
         <img src="<%= post.user.profile_image%>" class="post_icon_image">
         <%= post.user.name%>
-        <%= post.post_content %>
-        <%= post.field_content %>
-        <%= post.count_hour %>
+        <%= link_to post.post_content, post_path(post.id) %>
+        <% if post.user.id == current_user.id %>
+            <% @field = Field.find_by(title: post.field_content) %>
+            <%=link_to field_path(@field.id) do %>
+                <%= post.field_content %>
+                <%= post.count_hour %>時間
+            <% end %>
+            <%= link_to "/posts/#{post.id}", method: :delete do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %>
+        <% else %>
+            <%= post.field_content %>
+            <%= post.count_hour %>時間
+        <% end %>
     </div>
 <% end %>
