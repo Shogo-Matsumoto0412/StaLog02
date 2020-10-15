@@ -18,12 +18,14 @@
         <% end %>
     <% end %>
 <% end %>
-<%= month_calendar events: @posts do |date, posts| %>
-    <%= date.day %>
-    <% posts.each do |post| %>
-        <% @field = Field.find_by(title: post.field_content) %>
-        <%= link_to post.field_content, field_path(@field.id) %>
-        <%= post.count_hour %>時間
+<% if @user.id == current_user.id %>
+    <%= month_calendar events: @posts do |date, posts| %>
+        <%= date.day %>
+        <% posts.each do |post| %>
+            <% @field = Field.find_by(title: post.field_content) %>
+            <%= link_to post.field_content, field_path(@field.id) %>
+            <%= post.count_hour %>時間
+        <% end %>
     <% end %>
 <% end %>
 <% @user.posts.order(created_at: :desc).each do |post| %>
