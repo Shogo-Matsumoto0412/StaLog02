@@ -18,7 +18,7 @@
 </div>
 <div>
     <%= form_with model: @message do |f| %>
-        <%= f.text_field :message, placeholder: "メッセージを入力して下さい" %>
+        <%= f.text_field :message, placeholder: "メッセージを入力して下さい", size: 40 %>
         <%= f.hidden_field :room_id, value: @room.id %>
         <%= f.submit "投稿", class: "btn btn-primary" %>
     <% end %>
