@@ -16,13 +16,13 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.save
-    redirect_to root_path
+    redirect_back(fallback_location: root_path) 
   end
 
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    redirect_to root_path
+    redirect_back(fallback_location: root_path) 
   end
 
   def show
