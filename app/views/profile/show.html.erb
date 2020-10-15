@@ -18,6 +18,13 @@
         <% end %>
     <% end %>
 <% end %>
+<%= month_calendar events: @posts do |date, posts| %>
+    <%= date.day %>
+    <% posts.each do |post| %>
+        <%= post.field_content %>
+        <%= post.count_hour %>
+    <% end %>
+<% end %>
 <% @user.posts.order(created_at: :desc).each do |post| %>
     <div>
         <img src="<%= post.user.profile_image%>" class="post_icon_image">
