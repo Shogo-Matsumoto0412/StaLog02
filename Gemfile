@@ -76,3 +76,6 @@ gem 'font-awesome-sass', '~> 5.9.0'
 
 # Ransack
 gem 'ransack'
+
+# SimpleCalendar
+gem 'simple_calendar', '~> 2.0'
