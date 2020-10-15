@@ -11,3 +11,10 @@
         <%= render 'post', post: post %>
     </div>
 <% end %>
+<%= month_calendar events: @posts do |date, posts| %>
+    <%= date.day %>
+    <% posts.each do |post| %>
+        <%= post.field_content %>
+        <%= post.count_hour %>
+    <% end %>
+<% end %>
