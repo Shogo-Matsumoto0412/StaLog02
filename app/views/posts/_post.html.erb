@@ -9,6 +9,7 @@
         <%= link_to field_path(@field.id) do %>
             <%= post.field_content%>
             <%= post.count_hour%>時間
+            <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
         <% end %>
     <% else %>
         <%= post.field_content %>
