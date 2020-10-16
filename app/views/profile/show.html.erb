@@ -1,35 +1,41 @@
-<img src=<%= @user.profile_image %> class = "icon_image">
-<h1><%= @user.name %></h1>
-<p><%= @user.profile_text %></p>
-<%= render 'relationships/follow_button', user: @user %>
-<p>フォロー<%= @user.followings.count %></p>
-<p>フォロワー<%= @user.followers.count %></p>
-<% unless @user.id == current_user.id %>
-    <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
-        <% if @isRoom == true %>
-            <%= link_to "チャットへ", room_path(@roomId), class: "btn btn-primary" %>
-        <% else %>
-            <%= form_with model: @room do |f| %>
-                <%= fields_for @entry do |e| %>
-                    <%= e.hidden_field :user_id, value: @user.id %>
+<div class="profile_show_top">
+    <div>
+        <img src=<%= @user.profile_image %> class = "icon_image">
+        <h1><%= @user.name %></h1>
+        <p><%= @user.profile_text %></p>
+        <%= render 'relationships/follow_button', user: @user %>
+        <p>フォロー<%= @user.followings.count %></p>
+        <p>フォロワー<%= @user.followers.count %></p>
+        <% unless @user.id == current_user.id %>
+            <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
+                <% if @isRoom == true %>
+                    <%= link_to "チャットへ", room_path(@roomId), class: "btn btn-primary" %>
+                <% else %>
+                    <%= form_with model: @room do |f| %>
+                        <%= fields_for @entry do |e| %>
+                            <%= e.hidden_field :user_id, value: @user.id %>
+                        <% end %>
+                        <%= f.submit "チャットを始める", class: "btn btn-primary" %>
+                    <% end %>
                 <% end %>
-                <%= f.submit "チャットを始める", class: "btn btn-primary" %>
             <% end %>
         <% end %>
-    <% end %>
-<% end %>
-<% if @user.id == current_user.id %>
-    <%= month_calendar events: @posts do |date, posts| %>
-        <%= date.day %><br>
-        <% posts.each do |post| %>
-            <% @field = Field.find_by(title: post.field_content) %>
-            <%= link_to field_path(@field.id), class: "calendar_content_fontsize" do %>
-                <%= post.field_content %>
-                <%= post.count_hour %>時間<br>
+    </div>
+    <div class="calendar">
+        <% if @user.id == current_user.id %>
+            <%= month_calendar events: @posts do |date, posts| %>
+                <%= date.day %><br>
+                <% posts.each do |post| %>
+                    <% @field = Field.find_by(title: post.field_content) %>
+                    <%= link_to field_path(@field.id), class: "calendar_content_fontsize" do %>
+                        <%= post.field_content %>
+                        <%= post.count_hour %>時間<br>
+                    <% end %>
+                <% end %>
             <% end %>
         <% end %>
-    <% end %>
-<% end %>
+    </div>
+</div>
 <% @user.posts.order(created_at: :desc).each do |post| %>
     <div class="profile_show_posts">
         <div>
