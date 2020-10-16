@@ -50,9 +50,6 @@
                         <%= post.field_content %>
                         <%= post.count_hour %>時間
                     <% end %>
-                    <%= link_to "/posts/#{post.id}", method: :delete do %>
-                        <i class="fas fa-trash-alt"></i>
-                    <% end %>
                 <% else %>
                     <%= post.field_content %>
                     <%= post.count_hour %>時間
@@ -64,6 +61,11 @@
                     <%= post.post_content %>
                     <p>改善点</p>
                     <%= post.improvement_points %>
+                <% end %>
+                <% if post.user.id == current_user.id %>
+                    <%= link_to "/posts/#{post.id}", method: :delete do %>
+                        <i class="fas fa-trash-alt"></i>
+                    <% end %>
                 <% end %>
             </div>
         </div>
