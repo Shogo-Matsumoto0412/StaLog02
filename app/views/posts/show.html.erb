@@ -1,12 +1,18 @@
-<img src="<%= @post.user.profile_image%>" class="icon_image">
-<h1><%= @post.user.name %></h1>
-<p><%= @post.field_content%>　<%= @post.count_hour %>時間</p>
-<p>内容</p>
-<%= @post.teaching_materials %>
-<p>実行</p>
-<%= @post.post_content %>
-<p>改善点</p>
-<%= @post.improvement_points %>
+<div class="posts_show_top">
+    <div>
+        <img src="<%= @post.user.profile_image%>" class="icon_image">
+        <h1><%= @post.user.name %></h1>
+    </div>
+    <div>
+        <p><%= @post.field_content%>　<%= @post.count_hour %>時間</p>
+        <p>内容</p>
+        <%= @post.teaching_materials %>
+        <p>実行</p>
+        <%= @post.post_content %>
+        <p>改善点</p>
+        <%= @post.improvement_points %>
+    </div>
+</div>
 <p>★コメントする</p>
 <%= form_with model:[@post, @comment], method: :post do |f| %>
     <%= f.text_area :content, placeholder: "コメントする" %>
