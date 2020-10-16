@@ -39,7 +39,7 @@
 <% @user.posts.order(created_at: :desc).each do |post| %>
     <div class="profile_show_posts">
         <div>
-            <img src="<%= post.user.profile_image%>" class="post_icon_image">
+            <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
             <%= post.user.name%><br>
         </div>
         <div>
