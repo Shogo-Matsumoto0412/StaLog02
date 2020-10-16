@@ -10,6 +10,10 @@
 <% end %>
 <p>★コメント一覧</p>
 <% @comments.each do |comment| %>
+    <%= link_to profile_path(comment.user.id) do %>
+        <img src="<%= comment.user.profile_image %>" class="post_icon_image">
+        <%= comment.user.name %>
+    <% end %>
     <%= comment.content %>
     <% if comment.user_id == current_user.id %>
         <%= link_to "/posts/#{@post.id}/comments/#{comment.id}", method: :delete do %>
