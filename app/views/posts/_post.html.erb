@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
     <% if post.user.id == current_user.id%>
-        <div class="posts_index">
+        <div>
             <div>
                 <%= link_to profile_path(post.user.id) do %>
                     <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
@@ -26,7 +26,7 @@
         </div>
     <% else %>
         <% if current_user.following?(post.user) %>
-            <div class="posts_index">
+            <div>
                 <div>
                     <%= link_to profile_path(post.user.id) do %>
                         <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
@@ -35,9 +35,9 @@
                 </div>
                 <div>
                     <% @field = Field.find_by(title: post.field_content) %>
-                    <%= post.field_content%>
-                    <%= post.count_hour%>時間
-                    <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
+                        <%= post.field_content%>
+                        <%= post.count_hour%>時間
+                        <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
                     <%= link_to post_path(post.id) do %>
                         <p>内容</p>
                         <%= post.teaching_materials %>
