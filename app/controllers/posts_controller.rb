@@ -16,7 +16,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.save
-    redirect_to root_path 
+    flash[:notice] = "投稿しました"
+    redirect_to root_path
   end
 
   def destroy
