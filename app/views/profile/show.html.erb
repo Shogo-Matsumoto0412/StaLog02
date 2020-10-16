@@ -27,25 +27,22 @@
         <p>フォロー<%= @user.followings.count %></p>
         <p>フォロワー<%= @user.followers.count %></p>
     </div>
-    <div class="calendar">
-        <%= month_calendar events: @posts do |date, posts| %>
-            <%= date.day %><br>
-            <% posts.each do |post| %>
-                <% if post.user.id == current_user.id %>
-                    <% @field = Field.find_by(title: post.field_content) %>
-                    <%= link_to field_path(@field.id), class: "calendar_content_fontsize" do %>
-                        <%= "(" + post.field_content[0] + ")" %>
-                        <%= post.count_hour %>時間
+    <% if @user.id == current_user.id %>
+        <div class="calendar">
+            <%= month_calendar events: @posts do |date, posts| %>
+                <%= date.day %><br>
+                <% posts.each do |post| %>
+                    <% if post.user.id == current_user.id %>
+                        <% @field = Field.find_by(title: post.field_content) %>
+                        <%= link_to field_path(@field.id), class: "calendar_content_fontsize" do %>
+                            <%= "(" + post.field_content[0] + ")" %>
+                            <%= post.count_hour %>時間
+                        <% end %>
                     <% end %>
-                <% else %>
-                    <div class="calendar_content_fontsize">
-                        <%= "(" + post.field_content[0] + ")" %>
-                        <%= post.count_hour %>時間
-                    </div>
                 <% end %>
             <% end %>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
 </div>
 <div class="profile_show_posts_container">
     <% @user.posts.order(created_at: :desc).each do |post| %>
