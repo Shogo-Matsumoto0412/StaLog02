@@ -2,11 +2,14 @@
 <div class="field_show">
     <div class="posts">
         <% @posts.each do |post| %>
-            <% if post.user_id == current_user.id %>
-                <p><%= post.post_content %></p>
-                <p><%= post.count_hour %>時間</p>
-                <p><%= post.created_at.to_date %></p>
-            <% end %>
+            <p>内容</p>
+            <%= post.teaching_materials %>
+            <p>実行</p>
+            <%= post.post_content %>
+            <p>改善点</p>
+            <%= post.improvement_points %>
+            <p><%= post.count_hour %>時間</p>
+            <p><%= post.created_at.to_date %></p>
         <% end %>
     </div>
     <div class="total">
