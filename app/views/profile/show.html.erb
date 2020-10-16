@@ -33,7 +33,7 @@
             <% posts.each do |post| %>
                 <% @field = Field.find_by(title: post.field_content) %>
                 <%= link_to field_path(@field.id), class: "calendar_content_fontsize" do %>
-                    <%= post.field_content[0] %>
+                    <%= "(" + post.field_content[0] + ")" %>
                     <%= post.count_hour %>時間<br>
                 <% end %>
             <% end %>
