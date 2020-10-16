@@ -1,9 +1,9 @@
 <%= form_with model: @post do |f| %>
-    <h1>内容</h1>
+    <p>内容</p>
     <%= f.text_area :teaching_materials %><br>
-    <h1>実行</h1>
+    <p>実行</p>
     <%= f.text_area :post_content %><br>
-    <h1>改善点</h1>
+    <p>改善点</p>
     <%= f.text_area :improvement_points %><br>
     <%= f.select :field_content, @fields.map{|field|[field.title, field.title]}%>
     <%= f.number_field :count_hour, step: '0.1' %>時間<br>
