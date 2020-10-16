@@ -35,11 +35,9 @@
                 </div>
                 <div>
                     <% @field = Field.find_by(title: post.field_content) %>
-                    <%= link_to field_path(@field.id) do %>
-                        <%= post.field_content%>
-                        <%= post.count_hour%>時間
-                        <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
-                    <% end %>
+                    <%= post.field_content%>
+                    <%= post.count_hour%>時間
+                    <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
                     <%= link_to post_path(post.id) do %>
                         <p>内容</p>
                         <%= post.teaching_materials %>

@@ -15,8 +15,8 @@ class FieldsController < ApplicationController
 
   def show
     @field = Field.find_by(id: params[:id])
-    @post = Post.find_by(field_content: @field.title)
-    @posts = Post.where(field_content: @field.title).order(created_at: :desc)
+    @post = current_user.posts.find_by(field_content: @field.title)
+    @posts = current_user.posts.where(field_content: @field.title).order(created_at: :desc)
   end
 
   def destroy
