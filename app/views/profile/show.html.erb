@@ -3,23 +3,29 @@
         <img src=<%= @user.profile_image %> class = "icon_image">
         <h1><%= @user.name %></h1>
         <p><%= @user.profile_text %></p>
-        <%= render 'relationships/follow_button', user: @user %>
-        <p>フォロー<%= @user.followings.count %></p>
-        <p>フォロワー<%= @user.followers.count %></p>
-        <% unless @user.id == current_user.id %>
-            <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
-                <% if @isRoom == true %>
-                    <%= link_to "チャットへ", room_path(@roomId), class: "btn btn-primary" %>
-                <% else %>
-                    <%= form_with model: @room do |f| %>
-                        <%= fields_for @entry do |e| %>
-                            <%= e.hidden_field :user_id, value: @user.id %>
+        <div class="profile_show_btn">
+            <div>
+                <%= render 'relationships/follow_button', user: @user %>
+            </div>
+            <div>
+                <% unless @user.id == current_user.id %>
+                    <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
+                        <% if @isRoom == true %>
+                            <%= link_to "", room_path(@roomId), class: "btn btn-primary far fa-envelope" %>
+                        <% else %>
+                            <%= form_with model: @room do |f| %>
+                                <%= fields_for @entry do |e| %>
+                                    <%= e.hidden_field :user_id, value: @user.id %>
+                                <% end %>
+                                <%= f.submit "", class: "btn btn-primary far fa-envelope" %>
+                            <% end %>
                         <% end %>
-                        <%= f.submit "チャットを始める", class: "btn btn-primary" %>
                     <% end %>
                 <% end %>
-            <% end %>
-        <% end %>
+            </div>
+        </div>
+        <p>フォロー<%= @user.followings.count %></p>
+        <p>フォロワー<%= @user.followers.count %></p>
     </div>
     <div class="calendar">
         <%= month_calendar events: @posts do |date, posts| %>
