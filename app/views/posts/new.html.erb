@@ -1,5 +1,5 @@
 <%= form_with model: @post do |f| %>
-    <%= f.text_area :post_content %><br>
+    <%= f.text_area :post_content, placeholder: "勉強記録" %><br>
     <%= f.select :field_content, @fields.map{|field|[field.title, field.title]}%>
     <%= f.number_field :count_hour, step: '0.1' %>時間<br>
     <%= f.datetime_select :start_time %><br>
