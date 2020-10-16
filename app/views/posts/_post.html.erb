@@ -24,7 +24,14 @@
                 <img src="<%= post.user.profile_image%>" class="post_icon_image">
                 <%= post.user.name%>
             <% end %>
-            <%= link_to post.post_content, post_path(post.id) %>
+            <%= link_to post_path(post.id) do %>
+                <p>内容</p>
+                <%= post.teaching_materials %>
+                <p>実行</p>
+                <%= post.post_content %>
+                <p>改善点</p>
+                <%= post.improvement_points %>
+            <% end %>
             <%= post.field_content %>
             <%= post.count_hour%>時間
             <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
