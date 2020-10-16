@@ -34,7 +34,14 @@
     <div>
         <img src="<%= post.user.profile_image%>" class="post_icon_image">
         <%= post.user.name%>
-        <%= link_to post.post_content, post_path(post.id) %>
+        <%= link_to post_path(post.id) do %>
+            <p>内容</p>
+            <%= post.teaching_materials %>
+            <p>実行</p>
+            <%= post.post_content %>
+            <p>改善点</p>
+            <%= post.improvement_points %>
+        <% end %>
         <% if post.user.id == current_user.id %>
             <% @field = Field.find_by(title: post.field_content) %>
             <%=link_to field_path(@field.id) do %>
