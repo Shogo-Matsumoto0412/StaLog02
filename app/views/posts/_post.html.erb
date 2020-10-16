@@ -1,35 +1,42 @@
-<%= link_to profile_path(post.user.id) do %>
-    <img src="<%= post.user.profile_image%>" class="post_icon_image">
-    <%= post.user.name%>
-<% end %>
-<%= link_to post.post_content, post_path(post.id) %>
 <% if user_signed_in? %>
-    <% if post.user.id == current_user.id%>
-        <% @field = Field.find_by(title: post.field_content) %>
-        <%= link_to field_path(@field.id) do %>
-            <%= post.field_content%>
+    <% if current_user.following?(post.user) %>
+        <% if post.user.id == current_user.id%>
+            <%= link_to profile_path(post.user.id) do %>
+                <img src="<%= post.user.profile_image%>" class="post_icon_image">
+                <%= post.user.name%>
+            <% end %>
+            <%= link_to post.post_content, post_path(post.id) %>
+            <% @field = Field.find_by(title: post.field_content) %>
+            <%= link_to field_path(@field.id) do %>
+                <%= post.field_content%>
+                <%= post.count_hour%>時間
+                <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
+            <% end %>
+        <% else %>
+            <%= link_to profile_path(post.user.id) do %>
+                <img src="<%= post.user.profile_image%>" class="post_icon_image">
+                <%= post.user.name%>
+            <% end %>
+            <%= link_to post.post_content, post_path(post.id) %>
+            <%= post.field_content %>
             <%= post.count_hour%>時間
-            <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
         <% end %>
-    <% else %>
-        <%= post.field_content %>
-        <%= post.count_hour%>時間
+        <% if current_user.liked_by?(post.id) %>
+            <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
+                <i class="fa fa-heart unlike-btn"></i>
+            <% end %>
+            <%= post.likes.count %>
+        <% else %>
+            <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
+                <i class="fa fa-heart like-btn"></i>
+            <% end %>
+            <%= post.likes.count %>
+        <% end %>
+        <% if post.user_id == current_user.id %>
+            <%= link_to "/posts/#{post.id}", method: :delete do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %>
+        <% end %>
+        <br>
     <% end %>
-    <% if current_user.liked_by?(post.id) %>
-        <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
-            <i class="fa fa-heart unlike-btn"></i>
-        <% end %>
-        <%= post.likes.count %>
-    <% else %>
-        <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
-            <i class="fa fa-heart like-btn"></i>
-        <% end %>
-        <%= post.likes.count %>
-    <% end %>
-    <% if post.user_id == current_user.id %>
-        <%= link_to "/posts/#{post.id}", method: :delete do %>
-            <i class="fas fa-trash-alt"></i>
-        <% end %>
-    <% end %>
-    <br>
 <% end %>
