@@ -1,9 +1,9 @@
-<div class="posts_show_top">
-    <div>
+<div class="container">
+    <div class="posts_show_icon">
         <img src="<%= @post.user.profile_image%>" class="icon_image">
         <h1><%= @post.user.name %></h1>
     </div>
-    <div>
+    <div class="posts_show_contents">
         <p><%= @post.field_content%>　<%= @post.count_hour %>時間</p>
         <p>内容</p>
         <%= @post.teaching_materials %>
