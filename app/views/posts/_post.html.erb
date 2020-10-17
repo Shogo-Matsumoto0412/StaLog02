@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
     <% if post.user.id == current_user.id%>
-        <div>
+        <div class="posts_index_flex">
             <div>
                 <%= link_to profile_path(post.user.id) do %>
                     <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
@@ -26,7 +26,7 @@
         </div>
     <% else %>
         <% if current_user.following?(post.user) %>
-            <div>
+            <div class="posts_index_flex">
                 <div>
                     <%= link_to profile_path(post.user.id) do %>
                         <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>

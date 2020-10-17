@@ -12,8 +12,10 @@
         <% end %>
     </div>
 </div>
-<% @posts.each do |post| %>
-    <div id="post_<%= post.id %>">
-        <%= render 'post', post: post %>
-    </div>
-<% end %>
+<div class="posts_content">
+    <% @posts.each do |post| %>
+        <div id="post_<%= post.id %>">
+            <%= render 'post', post: post %>
+        </div>
+    <% end %>
+</div>

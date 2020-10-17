@@ -3,6 +3,15 @@
     justify-content: space-around;
 }
 
+.posts_index_flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.posts_content{
+    text-align: center;
+}
+
 .posts_show_contents{
     text-align: center;
 }
