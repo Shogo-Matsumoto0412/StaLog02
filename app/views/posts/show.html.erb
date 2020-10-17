@@ -2,6 +2,28 @@
     <div class="posts_show_icon">
         <img src="<%= @post.user.profile_image%>" class="icon_image">
         <h1><%= @post.user.name %></h1>
+        <%# コメントフォーム %>
+        <p>★コメントする</p>
+        <div class="comment_forms">
+            <%= form_with model:[@post, @comment], method: :post do |f| %>
+                <div><%= f.text_area :content, placeholder: "コメントする" %></div>
+                <div><%= f.hidden_field :post_id, value: @post.id %></div>
+                <div><%= f.submit "送信", class: "btn btn-primary"%></div>
+            <% end %>
+        </div>
+        <p>★コメント一覧</p>
+        <% @comments.each do |comment| %>
+            <%= link_to profile_path(comment.user.id) do %>
+                <img src="<%= comment.user.profile_image %>" class="post_icon_image">
+                <%= comment.user.name %>
+            <% end %>
+            <%= comment.content %>
+            <% if comment.user_id == current_user.id %>
+                <%= link_to "/posts/#{@post.id}/comments/#{comment.id}", method: :delete do %>
+                    <i class="fas fa-trash-alt"></i>
+                <% end %>
+            <% end %>
+        <% end %>
     </div>
     <div class="posts_show_contents">
         <p><%= @post.field_content%>　<%= @post.count_hour %>時間</p>
@@ -13,22 +35,3 @@
         <%= @post.improvement_points %>
     </div>
 </div>
-<p>★コメントする</p>
-<%= form_with model:[@post, @comment], method: :post do |f| %>
-    <%= f.text_area :content, placeholder: "コメントする" %>
-    <%= f.hidden_field :post_id, value: @post.id %>
-    <%= f.submit "送信", class: "btn btn-primary"%>
-<% end %>
-<p>★コメント一覧</p>
-<% @comments.each do |comment| %>
-    <%= link_to profile_path(comment.user.id) do %>
-        <img src="<%= comment.user.profile_image %>" class="post_icon_image">
-        <%= comment.user.name %>
-    <% end %>
-    <%= comment.content %>
-    <% if comment.user_id == current_user.id %>
-        <%= link_to "/posts/#{@post.id}/comments/#{comment.id}", method: :delete do %>
-            <i class="fas fa-trash-alt"></i>
-        <% end %>
-    <% end %>
-<% end %>

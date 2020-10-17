@@ -1,5 +1,6 @@
 .container{
-    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .posts_show_contents{
@@ -11,5 +12,9 @@
 }
 
 .posts_search{
+    text-align: center;
+}
+
+.posts_show_comments{
     text-align: center;
 }
