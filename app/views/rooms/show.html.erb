@@ -1,6 +1,8 @@
 <% @entries.each do |e| %>
-    <img src="<%= e.user.profile_image %>" class="icon_image" >
-    <%= e.user.name %>
+    <% unless e.user.id == current_user.id %>
+        <img src="<%= e.user.profile_image %>" class="icon_image" >
+        <%= e.user.name %>
+    <% end %>
 <% end %>
 <div>
     <% if @messages.present? %>
