@@ -17,3 +17,16 @@
     object-fit: cover;
     //タテヨコ比を変えないままトリミング
 }
+
+.profile_show_wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.calendar_text{
+    font-size: 12px;
+}
+
+.calendar_wrapper{
+    width: 60%;
+}

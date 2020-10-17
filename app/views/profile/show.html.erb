@@ -1,37 +1,43 @@
-<img src=<%= @user.profile_image %> class = "icon_image">
-<h1><%= @user.name %></h1>
-<p><%= @user.profile_text %></p>
-<%= render 'relationships/follow_button', user: @user %>
-<% unless @user.id == current_user.id %>
-    <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
-        <% if @isRoom == true %>
-            <%= link_to "", room_path(@roomId), class: "btn btn-primary far fa-envelope" %>
-        <% else %>
-            <%= form_with model: @room do |f| %>
-                <%= fields_for @entry do |e| %>
-                    <%= e.hidden_field :user_id, value: @user.id %>
-                <% end %>
-                <%= f.submit "", class: "btn btn-primary far fa-envelope" %>
-            <% end %>
-        <% end %>
-    <% end %>
-<% end %>
-<p>フォロー<%= @user.followings.count %></p>
-<p>フォロワー<%= @user.followers.count %></p>
-<% if @user.id == current_user.id %>
-    <%= month_calendar events: @posts do |date, posts| %>
-        <%= date.day %><br>
-        <% posts.each do |post| %>
-            <% if post.user.id == current_user.id %>
-                <% @field = Field.find_by(title: post.field_content) %>
-                <%= link_to field_path(@field.id), class: "calendar_content_fontsize" do %>
-                    <%= "(" + post.field_content[0] + ")" %>
-                    <%= post.count_hour %>時間
+<div class="profile_show_wrapper">
+    <div>
+        <img src=<%= @user.profile_image %> class = "icon_image">
+        <h1><%= @user.name %></h1>
+        <p><%= @user.profile_text %></p>
+        <%= render 'relationships/follow_button', user: @user %>
+        <% unless @user.id == current_user.id %>
+            <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
+                <% if @isRoom == true %>
+                    <%= link_to "", room_path(@roomId), class: "btn btn-primary far fa-envelope" %>
+                <% else %>
+                    <%= form_with model: @room do |f| %>
+                        <%= fields_for @entry do |e| %>
+                            <%= e.hidden_field :user_id, value: @user.id %>
+                        <% end %>
+                        <%= f.submit "", class: "btn btn-primary far fa-envelope" %>
+                    <% end %>
                 <% end %>
             <% end %>
         <% end %>
-    <% end %>
-<% end %>
+        <p>フォロー<%= @user.followings.count %></p>
+        <p>フォロワー<%= @user.followers.count %></p>
+    </div>
+    <div class="calendar_wrapper">
+        <% if @user.id == current_user.id %>
+            <%= month_calendar events: @posts do |date, posts| %>
+                <%= date.day %><br>
+                <% posts.each do |post| %>
+                    <% if post.user.id == current_user.id %>
+                        <% @field = Field.find_by(title: post.field_content) %>
+                        <%= link_to field_path(@field.id), class: "calendar_text" do %>
+                            <%= "(" + post.field_content[0] + ")" %>
+                            <%= post.count_hour %>時間
+                        <% end %>
+                    <% end %>
+                <% end %>
+            <% end %>
+        <% end %>
+    </div>
+</div>
 <% @user.posts.order(created_at: :desc).each do |post| %>
     <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
     <%= post.user.name%><br>
