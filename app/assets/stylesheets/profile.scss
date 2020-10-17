@@ -17,29 +17,3 @@
     object-fit: cover;
     //タテヨコ比を変えないままトリミング
 }
-
-.calendar_content_fontsize{
-    font-size: 12px;
-}
-
-.profile_show_posts_container{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.profile_show_posts{
-    display: flex;
-}
-
-.profile_show_top{
-    display: flex;
-    justify-content: center;
-}
-
-.calendar{
-    width: 70%;
-}
-
-.profile_show_btn{
-    display: flex;
-}

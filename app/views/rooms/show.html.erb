@@ -4,7 +4,6 @@
         <%= e.user.name %>
     <% end %>
 <% end %>
-<div>
     <% if @messages.present? %>
         <% @messages.each do |m| %>
             <img src="<%= m.user.profile_image %>" class="post_icon_image" >
@@ -17,11 +16,8 @@
             <% end %>
         <% end %>
     <% end %>
-</div>
-<div>
     <%= form_with model: @message do |f| %>
         <%= f.text_field :message, placeholder: "メッセージを入力して下さい", size: 40 %>
         <%= f.hidden_field :room_id, value: @room.id %>
         <%= f.submit "投稿", class: "btn btn-primary" %>
     <% end %>
-</div>

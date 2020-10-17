@@ -1,22 +1,16 @@
 <h1 class="field_name"><%= @post.field_content %></h1>
-<div class="field_show">
-    <div class="posts">
-        <% @posts.each do |post| %>
-            <% if post.user.id == current_user.id %>
-                <p>内容</p>
-                <%= post.teaching_materials %>
-                <p>実行</p>
-                <%= post.post_content %>
-                <p>改善点</p>
-                <%= post.improvement_points %>
-                <p><%= post.count_hour %>時間</p>
-                <p><%= post.created_at.to_date %></p>
-            <% end %>
-        <% end %>
-    </div>
-    <div class="total">
-        <% @posts.group("date(created_at)").sum(:count_hour).each do |time| %>
-            <p class="count_hour">日付<%= time[0] %>　<%= time[1] %>時間</p>
-        <% end %>
-    </div>
-</div>
+<% @posts.each do |post| %>
+    <% if post.user.id == current_user.id %>
+        <p>内容</p>
+        <%= post.teaching_materials %>
+        <p>実行</p>
+        <%= post.post_content %>
+        <p>改善点</p>
+        <%= post.improvement_points %>
+        <p><%= post.count_hour %>時間</p>
+        <p><%= post.created_at.to_date %></p>
+    <% end %>
+<% end %>
+<% @posts.group("date(created_at)").sum(:count_hour).each do |time| %>
+    <p class="count_hour">日付<%= time[0] %>　<%= time[1] %>時間</p>
+<% end %>
