@@ -4,6 +4,7 @@
             <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
             <%= post.user.name%>
         <% end %>
+        <br>
         <% @field = Field.find_by(title: post.field_content) %>
         <%= link_to field_path(@field.id) do %>
             <%= post.field_content%>
@@ -24,6 +25,7 @@
                 <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
                 <%= post.user.name%>
             <% end %>
+            <br>
             <% @field = Field.find_by(title: post.field_content) %>
                 <%= post.field_content%>
                 <%= post.count_hour%>時間
