@@ -1,43 +1,53 @@
 <% if user_signed_in? %>
     <% if post.user.id == current_user.id%>
-        <%= link_to profile_path(post.user.id) do %>
-            <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
-            <%= post.user.name%>
-        <% end %>
-        <br>
-        <% @field = Field.find_by(title: post.field_content) %>
-        <%= link_to field_path(@field.id) do %>
-            <%= post.field_content%>
-            <%= post.count_hour%>時間
-            <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
-        <% end %>
-        <%= link_to post_path(post.id) do %>
-            <p>内容</p>
-            <%= post.teaching_materials %>
-            <p>実行</p>
-            <%= post.post_content %>
-            <p>改善点</p>
-            <%= post.improvement_points %>
-        <% end %>
+        <div class="index_content_wrapper">
+            <div>
+                <%= link_to profile_path(post.user.id) do %>
+                    <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
+                    <%= post.user.name%>
+                <% end %>
+            </div>
+            <div>
+                <% @field = Field.find_by(title: post.field_content) %>
+                <%= link_to field_path(@field.id) do %>
+                    <%= post.field_content%>
+                    <%= post.count_hour%>時間
+                    <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
+                <% end %>
+                <%= link_to post_path(post.id) do %>
+                    <p>内容</p>
+                    <%= post.teaching_materials %>
+                    <p>実行</p>
+                    <%= post.post_content %>
+                    <p>改善点</p>
+                    <%= post.improvement_points %>
+                <% end %>
+            </div>
+        </div>
     <% else %>
         <% if current_user.following?(post.user) %>
-            <%= link_to profile_path(post.user.id) do %>
-                <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
-                <%= post.user.name%>
-            <% end %>
-            <br>
-            <% @field = Field.find_by(title: post.field_content) %>
-                <%= post.field_content%>
-                <%= post.count_hour%>時間
-                <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
-            <%= link_to post_path(post.id) do %>
-                <p>内容</p>
-                <%= post.teaching_materials %>
-                <p>実行</p>
-                <%= post.post_content %>
-                <p>改善点</p>
-                <%= post.improvement_points %>
-            <% end %>
+            <div class="index_content_wrapper">
+                <div>
+                    <%= link_to profile_path(post.user.id) do %>
+                        <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
+                        <%= post.user.name%>
+                    <% end %>
+                </div>
+                <div>
+                    <% @field = Field.find_by(title: post.field_content) %>
+                        <%= post.field_content%>
+                        <%= post.count_hour%>時間
+                        <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
+                    <%= link_to post_path(post.id) do %>
+                        <p>内容</p>
+                        <%= post.teaching_materials %>
+                        <p>実行</p>
+                        <%= post.post_content %>
+                        <p>改善点</p>
+                        <%= post.improvement_points %>
+                    <% end %>
+                </div>
+            <div>
         <% end %>
     <% end %>
     <% if post.user_id == current_user.id %>
