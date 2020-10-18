@@ -11,10 +11,14 @@
     display: flex;
     justify-content: center;
     border-bottom: 1px solid skyblue;
+    width: 100%;
 }
 
 .index_content_text{
     text-align: left;
+    margin-right: 10%;
+    margin-left: 48px;
+    width: 40%;
 }
 
 .content_title{
@@ -36,4 +40,21 @@
 
 .posts_show_comment_wrapper{
     text-align: center;
+}
+
+.index_content_textfield{
+    text-align: center;
+}
+
+.index_content_profile{
+    margin-left: 10%;
+    width: 20%;
+}
+
+.posts_index_button{
+    text-align: right;
+}
+
+.posts_index_button>.datetime{
+    text-align: left;
 }
