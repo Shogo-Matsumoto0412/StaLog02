@@ -20,6 +20,17 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @post = Post.find_by(id: params[:id])
+    @fields = current_user.fields.all
+  end
+
+  def update
+    @post = Post.find_by(id: params[:id])
+    @post.update(post_params)
+    redirect_to post_path(@post.id)
+  end
+
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy

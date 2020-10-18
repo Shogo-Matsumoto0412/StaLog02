@@ -1,0 +1,12 @@
+<%= form_with model: @post do |f| %>
+    <p>内容</p>
+    <%= f.text_area :teaching_materials %><br>
+    <p>実行</p>
+    <%= f.text_area :post_content %><br>
+    <p>改善点</p>
+    <%= f.text_area :improvement_points %><br>
+    <%= f.select :field_content, @fields.map{|field|[field.title, field.title]}, value: "#{@post.field_content}"%>
+    <%= f.number_field :count_hour, step: '0.1' %>時間<br>
+    <%= f.datetime_select :start_time %><br>
+    <%= f.submit "投稿", class: "btn btn-primary"%>
+<% end %>

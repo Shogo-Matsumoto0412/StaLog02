@@ -7,6 +7,9 @@
 <%= @post.post_content %>
 <p>改善点</p>
 <%= @post.improvement_points %>
+<%= link_to edit_post_path(@post.id) do %>
+    <i class="fas fa-edit"></i>
+<% end %>
 <%# コメントフォーム %>
 <p>★コメントする</p>
     <%= form_with model:[@post, @comment], method: :post do |f| %>
