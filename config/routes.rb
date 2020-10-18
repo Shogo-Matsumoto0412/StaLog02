@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :profile, only: [:show]
   resources :messages, only: [:create, :destroy]
   resources :rooms, only: [:create,:show]
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   resources :posts do
     resources :comments, only: [:create, :destroy]
   end

@@ -3,6 +3,11 @@
         <img src=<%= @user.profile_image %> class = "icon_image">
         <h1><%= @user.name %></h1>
         <p><%= @user.profile_text %></p>
+        <% if @user.id == current_user.id %>
+            <%= link_to edit_user_registration_path do %>
+                <i class="fas fa-edit"></i>
+            <% end %>
+        <% end %>
         <%= render 'relationships/follow_button', user: @user %>
         <% unless @user.id == current_user.id %>
             <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
