@@ -6,8 +6,9 @@
                     <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
                     <%= post.user.name%>
                 <% end %>
+                <p>目標<br><%= post.user.goal %></p>
             </div>
-            <div>
+            <div class="index_content_text">
                 <% @field = Field.find_by(title: post.field_content) %>
                 <%= link_to field_path(@field.id) do %>
                     <%= post.field_content%>
@@ -15,12 +16,26 @@
                     <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
                 <% end %>
                 <%= link_to post_path(post.id) do %>
-                    <p>内容</p>
-                    <%= post.teaching_materials %>
-                    <p>実行</p>
-                    <%= post.post_content %>
-                    <p>改善点</p>
-                    <%= post.improvement_points %>
+                    <p class="content_title">内容</p>
+                    <p class="content_text content"><%= post.teaching_materials %></p>
+                    <p class="content_title">実行</p>
+                    <p class="content_text"><%= post.post_content %></p>
+                    <p class="content_title">改善点</p>
+                    <p class="content_text"><%= post.improvement_points %></p>
+                <% end %>
+                <% if current_user.liked_by?(post.id) %>
+                    <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
+                        <i class="fa fa-heart unlike-btn"></i>
+                    <% end %>
+                    <%= post.likes.count %>
+                <% else %>
+                    <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
+                        <i class="fa fa-heart like-btn"></i>
+                    <% end %>
+                    <%= post.likes.count %>
+                <% end %>
+                <%= link_to "/posts/#{post.id}", method: :delete do %>
+                    <i class="fas fa-trash-alt"></i>
                 <% end %>
             </div>
         </div>
@@ -32,39 +47,34 @@
                         <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
                         <%= post.user.name%>
                     <% end %>
+                    <p>目標<br><%= post.user.goal %></p>
                 </div>
-                <div>
+                <div class="index_content_text">
                     <% @field = Field.find_by(title: post.field_content) %>
                         <%= post.field_content%>
                         <%= post.count_hour%>時間
                         <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
                     <%= link_to post_path(post.id) do %>
-                        <p>内容</p>
-                        <%= post.teaching_materials %>
-                        <p>実行</p>
-                        <%= post.post_content %>
-                        <p>改善点</p>
-                        <%= post.improvement_points %>
+                        <p class="content_title">内容</p>
+                        <p class="content_text content"><%= post.teaching_materials %></p>
+                        <p class="content_title">実行</p>
+                        <p class="content_text"><%= post.post_content %></p>
+                        <p class="content_title">改善点</p>
+                        <p class="content_text"><%= post.improvement_points %></p>
+                    <% end %>
+                    <% if current_user.liked_by?(post.id) %>
+                        <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
+                            <i class="fa fa-heart unlike-btn"></i>
+                        <% end %>
+                        <%= post.likes.count %>
+                    <% else %>
+                        <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
+                            <i class="fa fa-heart like-btn"></i>
+                        <% end %>
+                        <%= post.likes.count %>
                     <% end %>
                 </div>
             <div>
         <% end %>
     <% end %>
-    <% if post.user_id == current_user.id %>
-        <% if current_user.liked_by?(post.id) %>
-            <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
-                <i class="fa fa-heart unlike-btn"></i>
-            <% end %>
-            <%= post.likes.count %>
-        <% else %>
-            <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
-                <i class="fa fa-heart like-btn"></i>
-            <% end %>
-            <%= post.likes.count %>
-        <% end %>
-        <%= link_to "/posts/#{post.id}", method: :delete do %>
-            <i class="fas fa-trash-alt"></i>
-        <% end %>
-    <% end %>
-    <br>
 <% end %>

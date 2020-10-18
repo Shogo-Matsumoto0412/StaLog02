@@ -9,4 +9,21 @@
 .index_content_wrapper{
     display: flex;
     justify-content: center;
+    border: 1px solid skyblue;
+}
+
+.index_content_text{
+    text-align: left;
+}
+
+.content_title{
+    text-align: center;
+}
+
+.content_text{
+    text-align: left;
+}
+
+.content_text.content{
+    text-align: center;
 }
