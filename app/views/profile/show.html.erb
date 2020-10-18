@@ -45,29 +45,35 @@
     </div>
 </div>
 <% @user.posts.order(created_at: :desc).each do |post| %>
-    <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
-    <%= post.user.name%><br>
-    <% if post.user.id == current_user.id %>
-        <% @field = Field.find_by(title: post.field_content) %>
-        <%=link_to field_path(@field.id) do %>
-            <%= post.field_content %>
-            <%= post.count_hour %>時間
-        <% end %>
-    <% else %>
-        <%= post.field_content %>
-        <%= post.count_hour %>時間
-    <% end %>        
-    <%= link_to post_path(post.id) do %>
-        <p>内容</p>
-        <%= post.teaching_materials %>
-        <p>実行</p>
-        <%= post.post_content %>
-        <p>改善点</p>
-        <%= post.improvement_points %>
-    <% end %>
-    <% if post.user.id == current_user.id %>
-        <%= link_to "/posts/#{post.id}", method: :delete do %>
-            <i class="fas fa-trash-alt"></i>
-        <% end %>
-    <% end %>
+    <div class="profile_posts_wrapper">
+        <div>
+            <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
+            <%= post.user.name%><br>
+            <% if post.user.id == current_user.id %>
+                <% @field = Field.find_by(title: post.field_content) %>
+                <%=link_to field_path(@field.id) do %>
+                    <%= post.field_content %>
+                    <%= post.count_hour %>時間
+                <% end %>
+            <% else %>
+                <%= post.field_content %>
+                <%= post.count_hour %>時間
+            <% end %>
+        </div>
+        <div>
+            <%= link_to post_path(post.id) do %>
+                <p class="content_title">内容</p>
+                <p class="content_text content"><%= post.teaching_materials %></p>
+                <p class="content_title">実行</p>
+                <p class="content_text"><%= post.post_content %></p>
+                <p class="content_title">改善点</p>
+                <p class="content_text"><%= post.improvement_points %></p>
+            <% end %>
+            <% if post.user.id == current_user.id %>
+                <%= link_to "/posts/#{post.id}", method: :delete do %>
+                    <i class="fas fa-trash-alt"></i>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
 <% end %>
