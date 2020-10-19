@@ -143,3 +143,23 @@
 .profile_top_wrapper{
     display: block;
 }
+
+.profile_content_name{
+    background-color: #037BFE;
+    color: #fff;
+    padding: 5px 0;
+    border-radius: 5px;
+    margin-top: 16px;
+}
+
+.profile_content_name.another_user{
+    background-color: #DD3444;
+}
+
+.fa-envelope{
+    padding: 10px 35px;
+}
+
+.goal_title.another_user{
+    background-color: #DD3444;
+}
