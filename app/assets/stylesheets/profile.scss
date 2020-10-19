@@ -31,6 +31,10 @@
 .profile_show_wrapper{
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin: 24px 0;
+    border-bottom: 1px solid #037BFE;
+    padding-bottom: 24px;
 }
 
 .calendar_text{
@@ -39,8 +43,103 @@
 
 .calendar_wrapper{
     width: 60%;
+    margin-left: 32px;
 }
 
 .profile_posts_wrapper{
     display: flex;
+}
+
+.profile_center{
+    text-align: center;
+}
+
+.index_content_name_profile{
+    background-color: #037BFE;
+    color: #fff;
+    padding: 5px 0;
+    border-radius: 5px;
+    margin-top: 16px;
+}
+
+.index_content_name_profile.another_user{
+    background-color: #DD3444;
+}
+
+.posts_index_button_trash.profile{
+    text-align: right;
+    padding: 10px 10px 0 0;
+}
+
+.profile_edit{
+    text-align: right;
+    margin: 10px 10px 0 0;
+}
+
+.profile_icons{
+    text-align: center;
+}
+
+.profile_icons.another_user{
+    margin-right: 40px;
+}
+
+.profile_icons_image{
+    margin-bottom: 24px;
+}
+
+.profile_intro{
+    text-align: left;
+}
+
+.current_profile_follow_text{
+    margin-top: 24px;
+}
+
+.another_profile_wrapper{
+    display: flex;
+}
+
+.another_profile_text_wrapper{
+    display: flex;
+}
+
+.another_profile_buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 24px;
+}
+
+.another_follow_count{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 24px;
+}
+
+.current_profile_time{
+    display: flex;
+    padding: 0 32px;
+    padding-top: 16px;
+}
+
+.current_profile_buttons{
+    display: flex;
+}
+
+.index_content_items.another_user{
+    padding: 0 32px;
+    padding-top: 16px;
+}
+
+.current_profile_follow_text{
+    display: flex;
+    justify-content: space-around;
+}
+
+.calendar_wrapper.another_profile{
+    display: none;
+}
+
+.profile_top_wrapper{
+    display: block;
 }

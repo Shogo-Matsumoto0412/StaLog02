@@ -1,34 +1,87 @@
 <div class="profile_show_wrapper">
-    <div>
-        <img src=<%= @user.profile_image %> class = "icon_image">
-        <h1><%= @user.name %></h1>
-        <p>目標<br><%= @user.goal %></p>
-        <p>自己紹介<br><%= @user.profile_text %></p>
+    <div class="profile_top_wrapper">
         <% if @user.id == current_user.id %>
-            <%= link_to edit_user_registration_path do %>
-                <i class="fas fa-edit"></i>
-            <% end %>
-        <% end %>
-        <%= render 'relationships/follow_button', user: @user %>
-        <% unless @user.id == current_user.id %>
-            <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
-                <% if @isRoom == true %>
-                    <%= link_to "", room_path(@roomId), class: "btn btn-primary far fa-envelope" %>
-                <% else %>
-                    <%= form_with model: @room do |f| %>
-                        <%= fields_for @entry do |e| %>
-                            <%= e.hidden_field :user_id, value: @user.id %>
+            <div>
+                <div class="profile_icons">
+                    <img src=<%= @user.profile_image %> class = "icon_image profile_icons_image">
+                    <h1><%= @user.name %></h1>
+                </div>
+                <div class="posts_index_goals profile_center">
+                    <p class="goal_title">目標</p>
+                    <p class="goal_text"><%= @user.goal %></p>
+                    <p class="goal_title">自己紹介</p>
+                    <p class="goal_text profile_intro"><%= @user.profile_text %></p>
+                    <div class="profile_edit">
+                        <%= link_to edit_user_registration_path do %>
+                            <i class="fas fa-edit"></i>
                         <% end %>
-                        <%= f.submit "", class: "btn btn-primary far fa-envelope" %>
+                    </div>
+                </div>
+                <div class="current_profile_follow_text">
+                    <p>フォロー<%= @user.followings.count %></p>
+                    <p>フォロワー<%= @user.followers.count %></p>
+                </div>
+                <% unless @user.id == current_user.id %>
+                    <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
+                        <% if @isRoom == true %>
+                            <%= link_to "", room_path(@roomId), class: "btn btn-primary far fa-envelope" %>
+                        <% else %>
+                            <%= form_with model: @room do |f| %>
+                                <%= fields_for @entry do |e| %>
+                                    <%= e.hidden_field :user_id, value: @user.id %>
+                                <% end %>
+                                <%= f.submit "", class: "btn btn-primary far fa-envelope" %>
+                            <% end %>
+                        <% end %>
                     <% end %>
                 <% end %>
-            <% end %>
+            </div>
+        <% else %>
+            <div class="another_profile_wrapper">
+                <div class="another_profile_text_wrapper">
+                    <div class="profile_icons another_user">
+                        <img src=<%= @user.profile_image %> class = "icon_image profile_icons_image">
+                        <h1><%= @user.name %></h1>
+                        <div class="another_profile_follow_text">
+                            <div class="another_profile_buttons">
+                                <div>
+                                    <%= render 'relationships/follow_button', user: @user %>
+                                </div>
+                                <div>
+                                    <% unless @user.id == current_user.id %>
+                                        <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
+                                            <% if @isRoom == true %>
+                                                <%= link_to "", room_path(@roomId), class: "btn btn-primary far fa-envelope" %>
+                                            <% else %>
+                                                <%= form_with model: @room do |f| %>
+                                                    <%= fields_for @entry do |e| %>
+                                                        <%= e.hidden_field :user_id, value: @user.id %>
+                                                    <% end %>
+                                                    <%= f.submit "", class: "btn btn-primary far fa-envelope" %>
+                                                <% end %>
+                                            <% end %>
+                                        <% end %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="another_follow_count">
+                                <p>フォロー<%= @user.followings.count %></p>
+                                <p>フォロワー<%= @user.followers.count %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="posts_index_goals profile_center another_user">
+                        <p class="goal_title">目標</p>
+                        <p class="goal_text"><%= @user.goal %></p>
+                        <p class="goal_title">自己紹介</p>
+                        <p class="goal_text profile_intro"><%= @user.profile_text %></p>
+                    </div>
+                </div>
+            </div>
         <% end %>
-        <p>フォロー<%= @user.followings.count %></p>
-        <p>フォロワー<%= @user.followers.count %></p>
     </div>
-    <div class="calendar_wrapper">
-        <% if @user.id == current_user.id %>
+    <% if @user.id == current_user.id %>
+        <div class="calendar_wrapper">
             <%= month_calendar events: @posts do |date, posts| %>
                 <%= date.day %><br>
                 <% posts.each do |post| %>
@@ -41,39 +94,104 @@
                     <% end %>
                 <% end %>
             <% end %>
-        <% end %>
-    </div>
+        </div>
+    <% else %>
+        <div class="calendar_wrapper another_profile">
+            <div>
+                <%= month_calendar events: @posts do |date, posts| %>
+                    <%= date.day %><br>
+                    <% posts.each do |post| %>
+                        <% if post.user.id == current_user.id %>
+                            <% @field = Field.find_by(title: post.field_content) %>
+                            <%= link_to field_path(@field.id), class: "calendar_text" do %>
+                                <%= "(" + post.field_content[0] + ")" %>
+                                <%= post.count_hour %>時間
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
 </div>
 <% @user.posts.order(created_at: :desc).each do |post| %>
-    <div class="profile_posts_wrapper">
-        <div>
-            <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
-            <%= post.user.name%><br>
-            <% if post.user.id == current_user.id %>
+    <% if post.user.id == current_user.id %>
+        <div class="index_content_wrapper">
+            <div class="index_content_profile profile_center">
+                <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
+                <p class="index_content_name_profile"><%= post.user.name%></p>
+            </div>
+            <div class="index_content_text">
                 <% @field = Field.find_by(title: post.field_content) %>
                 <%=link_to field_path(@field.id) do %>
-                    <%= post.field_content %>
-                    <%= post.count_hour %>時間
+                    <div class="index_content_textfield">
+                        <p><%= post.field_content %></p>
+                        <p><%= post.count_hour %>時間</p>
+                    </div>
                 <% end %>
-            <% else %>
-                <%= post.field_content %>
-                <%= post.count_hour %>時間
-            <% end %>
-        </div>
-        <div>
-            <%= link_to post_path(post.id) do %>
-                <p class="content_title">内容</p>
-                <p class="content_text content"><%= post.teaching_materials %></p>
-                <p class="content_title">実行</p>
-                <p class="content_text"><%= post.post_content %></p>
-                <p class="content_title">改善点</p>
-                <p class="content_text"><%= post.improvement_points %></p>
-            <% end %>
-            <% if post.user.id == current_user.id %>
-                <%= link_to "/posts/#{post.id}", method: :delete do %>
-                    <i class="fas fa-trash-alt"></i>
+                <%= link_to post_path(post.id) do %>
+                    <div class="index_content_block">
+                        <p class="content_title">内容</p>
+                        <p class="content_text content"><%= post.teaching_materials %></p>
+                    </div>
+                    <div class="index_content_block">
+                        <p class="content_title">実行</p>
+                        <p class="content_text"><%= post.post_content %></p>
+                    </div>
+                    <div class="index_content_block">
+                        <p class="content_title">改善点</p>
+                        <p class="content_text"><%= post.improvement_points %></p>
+                    </div>
                 <% end %>
-            <% end %>
+                <div class="posts_index_button">
+                    <div class="index_content_items">
+                        <div>
+                            <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
+                        </div>
+                        <div class="posts_index_button_items">
+                            <div class="posts_index_button_trash">
+                                <%= link_to "/posts/#{post.id}", method: :delete do %>
+                                    <i class="fas fa-trash-alt"></i>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    <% else %>
+        <div class="index_content_wrapper">
+            <div class="index_content_profile profile_center">
+                <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
+                <p class="index_content_name_profile another_user"><%= post.user.name%></p>
+            </div>
+            <div class="index_content_text">
+                <div class="index_content_textfield another_user">
+                    <p><%= post.field_content %></p>
+                    <p><%= post.count_hour %>時間</p>
+                </div>
+                <%= link_to post_path(post.id) do %>
+                    <div class="index_content_block another_user">
+                        <p class="content_title another_user">内容</p>
+                        <p class="content_text content another_user"><%= post.teaching_materials %></p>
+                    </div>
+                    <div class="index_content_block another_user">
+                        <p class="content_title another_user">実行</p>
+                        <p class="content_text another_user"><%= post.post_content %></p>
+                    </div>
+                    <div class="index_content_block another_user">
+                        <p class="content_title another_user">改善点</p>
+                        <p class="content_text another_user"><%= post.improvement_points %></p>
+                    </div>
+                <% end %>
+                <div class="posts_index_button">
+                    <div class="index_content_items">
+                        <div>
+                            <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
 <% end %>
