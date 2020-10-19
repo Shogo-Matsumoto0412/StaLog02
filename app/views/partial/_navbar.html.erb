@@ -1,22 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to "Navbar", root_path, class: "navbar-brand" %>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <%= link_to "Navbar", root_path, class: "navbar-brand text-white" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "サインアウト", destroy_user_session_path, class: "nav-link", method: :delete %>
+          <%= link_to "新規投稿", new_post_path, class: "nav-link text-white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to profile_path(current_user.id), class: "nav-link text-white" do %>
+            <%= current_user.name %>
+            <img src="<%= current_user.profile_image%>" class="navbar_icon_image navbar_icon_margin">
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-white", method: :delete %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "ログイン", new_user_session_path, class: "nav-link text-white", method: :delete %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white", method: :delete %>
         </li>
       <% end %>
     </ul>

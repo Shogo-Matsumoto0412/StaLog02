@@ -18,6 +18,16 @@
     //タテヨコ比を変えないままトリミング
 }
 
+.navbar_icon_image{
+    width: 25px;
+    height: 25px;
+    //サイズ指定
+    border-radius: 12.5px;
+    //画像を丸くする
+    object-fit: cover;
+    //タテヨコ比を変えないままトリミング
+}
+
 .profile_show_wrapper{
     display: flex;
     justify-content: center;
