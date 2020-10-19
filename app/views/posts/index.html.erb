@@ -1,12 +1,16 @@
 <div class="posts_index_searchs">
-    <%= search_form_for @search do |f| %>
-        <%= f.search_field :post_content_cont %>
-        <%= f.submit "文字検索", class: "btn btn-primary"%>
-    <% end %>
-    <%= search_form_for @search2 do |f| %>
-        <%= f.search_field :field_content_cont %>
-        <%= f.submit "タグ検索", class: "btn btn-primary"%>
-    <% end %>
+    <div class="search_word">
+        <%= search_form_for @search do |f| %>
+            <%= f.search_field :post_content_cont %>
+            <%= f.submit "文字検索", class: "btn btn-primary"%>
+        <% end %>
+    </div>
+    <div class="search_tag">
+        <%= search_form_for @search2 do |f| %>
+            <%= f.search_field :field_content_cont %>
+            <%= f.submit "タグ検索", class: "btn btn-primary"%>
+        <% end %>
+    </div>
 </div>
 <div class="posts_index_wrapper">
     <% @posts.each do |post| %>
