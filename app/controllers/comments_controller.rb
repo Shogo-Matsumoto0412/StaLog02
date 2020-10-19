@@ -1,8 +1,13 @@
 class CommentsController < ApplicationController
     def create
         @comment = Comment.new(comment_params)
-        @comment.save
-        redirect_back(fallback_location: root_path) 
+        if @comment.save
+            flash[:notice] = "コメントしました"
+            redirect_back(fallback_location: root_path) 
+        else
+            flash[:notice] = "コメントに失敗しました"
+            redirect_back(fallback_location: root_path) 
+        end
     end
 
     def destroy
