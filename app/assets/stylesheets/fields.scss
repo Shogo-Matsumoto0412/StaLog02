@@ -6,3 +6,39 @@
 .field_name{
     text-align: center;
 }
+
+.field_index_text{
+    display: flex;
+    justify-content: center;
+}
+
+.field_index_form{
+    text-align: center;
+    margin-top: 24px;
+}
+
+.field_title a{
+    color: #fff;
+}
+
+.field_title{
+    font-size: 32px;
+    background-color: #037BFE;
+    color: #fff;
+    margin: 32px 32px 16px;
+    border-radius: 5px;
+}
+
+.field_title a{
+    display: block;
+    padding: 16px 20px;
+}
+
+.field_title.nil{
+    background-color: #999;
+    padding: 16px 20px;
+}
+
+.field_trash{
+    align-self: center;
+}

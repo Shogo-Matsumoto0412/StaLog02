@@ -1,21 +1,33 @@
 <% @fields.each do |field| %>
     <% if field.user_id == current_user.id %>
         <% if current_user.posts.find_by(field_content: field.title) %>
-            <%= link_to field.title, field_path(field.id) %>
-            <%= link_to "/fields/#{field.id}", method: :delete do %>
-                <i class="fas fa-trash-alt"></i>
-            <% end %>
-            <br>
+            <div class="field_index_text">
+                <div class="field_title">
+                    <%= link_to field.title, field_path(field.id) %>
+                </div>
+                <div class="field_trash">
+                    <%= link_to "/fields/#{field.id}", method: :delete do %>
+                        <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                </div>
+            </div>
         <% else %>
-            <%= field.title%>
-            <%= link_to "/fields/#{field.id}", method: :delete do %>
-                <i class="fas fa-trash-alt"></i>
-            <% end %>
-            <br>
+            <div class="field_index_text">
+                <div class="field_title nil">
+                    <%= field.title%>
+                </div>
+                <div class="field_trash">
+                    <%= link_to "/fields/#{field.id}", method: :delete do %>
+                        <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                </div>
+            </div>
         <% end %>
     <% end %>
 <% end %>
-<%= form_with model: @field do |f| %>
-    <%= f.text_field :title, placeholder: "分野"%>
-    <%= f.submit "登録", class: "btn btn-primary" %>
-<% end %>
+<div class="field_index_form">
+    <%= form_with model: @field do |f| %>
+        <%= f.text_field :title, placeholder: "分野"%>
+        <%= f.submit "登録", class: "btn content_btn" %>
+    <% end %>
+</div>
