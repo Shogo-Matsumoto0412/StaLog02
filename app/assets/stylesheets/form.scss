@@ -9,6 +9,71 @@
     -moz-appearance: none;
 }
 
+.materials_textarea{
+    width: 50%;
+    height: 50px;
+}
+
 .comment_textarea_wrapper{
     margin-bottom: 16px;
+}
+
+.cp_iptxt {
+	position: relative;
+	width: 50%;
+    margin: 40px auto;
+}
+
+.cp_iptxt.long{
+    height: 200px;
+}
+.cp_iptxt textarea {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 8px 0;
+	padding: 0.3em;
+	transition: 0.3s;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+	outline: none;
+}
+
+.cp_iptxt.long textarea{
+    height: 200px;
+}
+.cp_iptxt textarea:focus {
+	border-color: #037BFE;
+}
+.cp_iptxt i {
+	position: absolute;
+	top: 8px;
+	left: 0;
+	padding: 9px 8px;
+	transition: 0.3s;
+	color: #aaaaaa;
+}
+.cp_iptxt textarea:focus + i {
+	color: #da3c41;
+}
+
+.posts_new_forms_wrapper{
+    text-align: center;
+    margin: 48px 0;
+}
+
+.icon{
+    margin-right: 16px;
+}
+
+.posts_new_wrapper p span{
+    background-color: #037BFE;
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 5px;
+}
+
+.content_btn{
+    background-color: #808000;
+    color: #fff;
 }

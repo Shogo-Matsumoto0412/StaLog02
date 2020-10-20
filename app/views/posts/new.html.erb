@@ -1,12 +1,38 @@
-<%= form_with model: @post do |f| %>
-    <p>内容</p>
-    <%= f.text_area :teaching_materials %><br>
-    <p>実行</p>
-    <%= f.text_area :post_content %><br>
-    <p>改善点</p>
-    <%= f.text_area :improvement_points %><br>
-    <%= f.select :field_content, @fields.map{|field|[field.title, field.title]}%>
-    <%= f.number_field :count_hour, step: '0.1' %>時間<br>
-    <%= f.datetime_select :start_time %><br>
-    <%= f.submit "投稿", class: "btn btn-primary"%>
-<% end %>
+<div class="posts_new_forms_wrapper">
+    <%= form_with model: @post do |f| %>
+        <div class="posts_new_wrapper">
+            <p><span><i class="fas fa-graduation-cap icon"></i>内容</span></p>
+            <div class="cp_iptxt">
+                <%= f.text_area :teaching_materials, placeholder: "内容・テーマ" %>
+            </div>
+        </div>
+        <div class="posts_new_wrapper">
+            <p><span><i class="fas fa-book icon"></i>実行</span></p>
+            <div class="cp_iptxt long">
+                <%= f.text_area :post_content, placeholder: "実行したこと" %>
+            </div>
+        </div>
+        <div class="posts_new_wrapper">
+            <p><span><i class="fas fa-sort-amount-up icon"></i>改善点</span></p>
+            <div class="cp_iptxt long">
+                <%= f.text_area :improvement_points, placeholder: "改善の必要があること" %>
+            </div>
+        </div>
+        <div class="record_wrapper">
+            <div class="posts_new_wrapper">
+                <p><span><i class="fas fa-pen icon"></i>分野</span>　・　<span><i class="fas fa-clock icon"></i>時間</span></p>
+                <div class="cp_iptxt">
+                    <%= f.select :field_content, @fields.map{|field|[field.title, field.title]} %>
+                    <%= f.number_field :count_hour, step: '0.1' %>時間
+                <div>
+            </div>
+        </div>
+        <div class="posts_new_wrapper">
+            <p><span><i class="fas fa-calendar-alt icon"></i>学習日時</span></p>
+            <div class="cp_iptxt">
+                <%= f.datetime_select :start_time %>
+            </div>
+        </div>
+        <%= f.submit "投稿", class: "btn content_btn"%>
+    <% end %>
+</div>
