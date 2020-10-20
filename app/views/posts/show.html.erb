@@ -29,7 +29,7 @@
         <% end %>
         <div class="comment_form">
             <%= form_with model:[@post, @comment], method: :post do |f| %>
-                <div><%= f.text_area :content, placeholder: "コメントする" %></div>
+                <div class="comment_textarea_wrapper"><%= f.text_area :content, placeholder: "コメントする", rows: "8", cols: "80", class: "comment_textarea" %></div>
                 <div><%= f.hidden_field :post_id, value: @post.id %></div>
                 <% if @post.user.id == current_user.id %>
                     <div><%= f.submit "送信", class: "btn btn-primary"%></div>
