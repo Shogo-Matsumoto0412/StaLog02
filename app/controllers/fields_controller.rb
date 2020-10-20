@@ -14,6 +14,7 @@ class FieldsController < ApplicationController
     @field = Field.find_by(id: params[:id])
     @post = current_user.posts.find_by(field_content: @field.title)
     @posts = current_user.posts.where(field_content: @field.title).order(created_at: :desc)
+    @graph = @posts.group("date(created_at)").sum(:count_hour)
   end
 
   def destroy

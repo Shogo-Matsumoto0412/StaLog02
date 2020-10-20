@@ -79,3 +79,6 @@ gem 'ransack'
 
 # SimpleCalendar
 gem 'simple_calendar', '~> 2.0'
+
+# ChartKick
+gem "chartkick"
