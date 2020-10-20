@@ -20,7 +20,7 @@
         </div>
         <div class="record_wrapper">
             <div class="posts_new_wrapper">
-                <p><span><i class="fas fa-pen icon"></i>分野</span>　・　<span><i class="fas fa-clock icon"></i>時間</span></p>
+                <p><span><i class="fas fa-pen icon"></i>分野</span>　・　<span><i class="fas fa-clock icon"></i>学習時間</span></p>
                 <div class="cp_iptxt">
                     <%= f.select :field_content, @fields.map{|field|[field.title, field.title]} %>
                     <%= f.number_field :count_hour, step: '0.1' %>時間
