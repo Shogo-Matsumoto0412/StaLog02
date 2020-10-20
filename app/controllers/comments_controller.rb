@@ -2,10 +2,10 @@ class CommentsController < ApplicationController
     def create
         @comment = Comment.new(comment_params)
         if @comment.save
-            flash[:notice] = "コメントしました"
+            flash[:notice] = "コメントを送信しました"
             redirect_back(fallback_location: root_path) 
         else
-            flash[:notice] = "コメントに失敗しました"
+            flash[:notice] = "コメントの送信に失敗しました"
             redirect_back(fallback_location: root_path) 
         end
     end

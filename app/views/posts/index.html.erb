@@ -1,14 +1,14 @@
 <div class="posts_index_searchs">
     <div class="search_word">
         <%= search_form_for @search do |f| %>
-            <%= f.search_field :post_content_cont %>
-            <%= f.submit "文字検索", class: "btn btn-primary"%>
+            <%= f.search_field :teaching_materials_cont %>
+            <%= f.submit "内容検索", class: "btn btn-primary"%>
         <% end %>
     </div>
     <div class="search_tag">
         <%= search_form_for @search2 do |f| %>
             <%= f.search_field :field_content_cont %>
-            <%= f.submit "タグ検索", class: "btn btn-primary"%>
+            <%= f.submit "分野検索", class: "btn btn-primary"%>
         <% end %>
     </div>
 </div>

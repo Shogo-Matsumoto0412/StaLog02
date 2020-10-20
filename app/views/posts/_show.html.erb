@@ -1,0 +1,97 @@
+<% if user_signed_in? %>
+    <div class="index_content_wrapper">
+        <div class="index_content_profile">
+            <%= link_to profile_path(post.user.id) do %>
+                <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
+                <% if post.user.id == current_user.id %>
+                    <p class="index_content_name"><%= post.user.name%></p>
+                <% else %>
+                    <p class="index_content_name another_user"><%= post.user.name%></p>
+                <% end %>
+            <% end %>
+            <% if post.user.id == current_user.id %>
+                <div class="posts_index_goals">
+                    <p class="goal_title">目標</p>
+                    <p class="goal_text"><%= post.user.goal %></p>
+                </div>
+            <% else %>
+                <div class="posts_index_goals another_user">
+                    <p class="goal_title another_user">目標</p>
+                    <p class="goal_text another_user"><%= post.user.goal %></p>
+                </div>
+            <% end %>
+        </div>
+        <div class="index_content_text">
+            <% @field = Field.find_by(title: post.field_content) %>
+            <% if post.user.id == current_user.id %>
+                <%= link_to field_path(@field.id), class: "content_textfield_links" do %>
+                    <div class="index_content_textfield">
+                        <p><%= post.field_content%></p>
+                        <p><%= post.count_hour%>時間</p>
+                    </div>
+                <% end %>
+            <% else %>
+                <div class="index_content_textfield another_user">
+                    <p><%= post.field_content%></p>
+                    <p><%= post.count_hour%>時間</p>
+                </div>
+            <% end %>
+            <% if post.user.id == current_user.id %>
+                <div class="index_content_block">
+                    <p class="content_title_show">内容</p>
+                    <p class="content_text_show content"><%= post.teaching_materials %></p>
+                </div>
+                <div class="index_content_block">
+                    <p class="content_title_show">実行</p>
+                    <p class="content_text_show"><%= post.post_content %></p>
+                </div>
+                <div class="index_content_block">
+                    <p class="content_title_show">改善点</p>
+                    <p class="content_text_show"><%= post.improvement_points %></p>
+                </div>
+            <% else %>
+                <div class="index_content_block another_user">
+                    <p class="content_title_show another_user">内容</p>
+                    <p class="content_text_show content another_user"><%= post.teaching_materials %></p>
+                </div>
+                <div class="index_content_block another_user">
+                    <p class="content_title_show another_user">実行</p>
+                    <p class="content_text_show another_user"><%= post.post_content %></p>
+                </div>
+                <div class="index_content_block another_user">
+                    <p class="content_title_show another_user">改善点</p>
+                    <p class="content_text_show another_user"><%= post.improvement_points %></p>
+                </div>
+            <% end %>
+            <div class="posts_index_button">
+                <div class="index_content_items">
+                    <div>
+                        <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
+                    </div>
+                    <div class="posts_index_button_items">
+                        <div>
+                            <% if current_user.liked_by?(post.id) %>
+                                <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
+                                    <i class="fa fa-heart unlike-btn"></i>
+                                <% end %>
+                                <%= post.likes.count %>
+                            <% else %>
+                                <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
+                                    <i class="fa fa-heart like-btn"></i>
+                                <% end %>
+                                <%= post.likes.count %>
+                            <% end %>
+                        </div>
+                        <% if post.user.id == current_user.id %>
+                            <div class="posts_index_button_trash">
+                                <%= link_to "/posts/#{post.id}", method: :delete do %>
+                                    <i class="fas fa-trash-alt"></i>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
