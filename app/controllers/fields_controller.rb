@@ -1,9 +1,6 @@
 class FieldsController < ApplicationController
   def index
     @fields = Field.all
-  end
-
-  def new
     @field = Field.new
   end
 
