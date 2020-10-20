@@ -53,6 +53,9 @@
                                 <% end %>
                             </div>
                             <div class="posts_index_button_trash">
+                                <%= link_to edit_post_path(post.id) do %>
+                                    <i class="fas fa-edit icon"></i>
+                                <% end %>
                                 <%= link_to "/posts/#{post.id}", method: :delete do %>
                                     <i class="fas fa-trash-alt"></i>
                                 <% end %>
