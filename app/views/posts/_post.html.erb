@@ -4,10 +4,10 @@
             <div class="index_content_profile">
                 <%= link_to profile_path(post.user.id) do %>
                     <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
-                    <p class="index_content_name"><%= post.user.name%></p>
+                    <p class="index_content_name"><i class="fas fa-user icon"></i><%= post.user.name%></p>
                 <% end %>
                 <div class="posts_index_goals">
-                    <p class="goal_title">目標</p>
+                    <p class="goal_title"><i class="fas fa-bullseye icon"></i>目標</p>
                     <p class="goal_text"><%= post.user.goal %></p>
                 </div>
             </div>
@@ -15,21 +15,21 @@
                 <% @field = Field.find_by(title: post.field_content) %>
                 <%= link_to field_path(@field.id), class: "content_textfield_links" do %>
                     <div class="index_content_textfield">
-                        <p><%= post.field_content%></p>
-                        <p><i class="fas fa-clock"></i><%= post.count_hour%>時間</p>
+                        <p><i class="fas fa-pen icon"></i><%= post.field_content%></p>
+                        <p><i class="fas fa-clock icon"></i><%= post.count_hour%>時間</p>
                     </div>
                 <% end %>
                 <%= link_to post_path(post.id) do %>
                     <div class="index_content_block">
-                        <p class="content_title">内容</p>
+                        <p class="content_title"><i class="fas fa-graduation-cap icon"></i>内容</p>
                         <p class="content_text content"><%= post.teaching_materials %></p>
                     </div>
                     <div class="index_content_block">
-                        <p class="content_title">実行</p>
+                        <p class="content_title"><i class="fas fa-book icon"></i>実行</p>
                         <p class="content_text"><%= post.post_content %></p>
                     </div>
                     <div class="index_content_block">
-                        <p class="content_title">改善点</p>
+                        <p class="content_title"><i class="fas fa-sort-amount-up icon"></i>改善点</p>
                         <p class="content_text"><%= post.improvement_points %></p>
                     </div>
                 <% end %>
@@ -68,30 +68,30 @@
                 <div class="index_content_profile">
                     <%= link_to profile_path(post.user.id) do %>
                         <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
-                        <p class="index_content_name another_user"><%= post.user.name%></p>
+                        <p class="index_content_name another_user"><i class="fas fa-user icon"></i><%= post.user.name%></p>
                     <% end %>
                     <div class="posts_index_goals another_user">
-                        <p class="goal_title another_user">目標</p>
+                        <p class="goal_title another_user"><i class="fas fa-bullseye icon"></i>目標</p>
                         <p class="goal_text another_user"><%= post.user.goal %></p>
                     </div>
                 </div>
                 <div class="index_content_text">
                     <% @field = Field.find_by(title: post.field_content) %>
                         <div class="index_content_textfield another_user">
-                            <p><%= post.field_content%></p>
-                            <p><i class="fas fa-clock"></i><%= post.count_hour%>時間</p>
+                            <p><i class="fas fa-pen icon"></i><%= post.field_content%></p>
+                            <p><i class="fas fa-clock icon"></i><%= post.count_hour%>時間</p>
                         </div>
                     <%= link_to post_path(post.id) do %>
                         <div class="index_content_block another_user">
-                            <p class="content_title another_user">内容</p>
+                            <p class="content_title another_user"><i class="fas fa-graduation-cap icon"></i>内容</p>
                             <p class="content_text content another_user"><%= post.teaching_materials %></p>
                         </div>
                         <div class="index_content_block another_user">
-                            <p class="content_title another_user">実行</p>
+                            <p class="content_title another_user"><i class="fas fa-book icon"></i>実行</p>
                             <p class="content_text another_user"><%= post.post_content %></p>
                         </div>
                         <div class="index_content_block another_user">
-                            <p class="content_title another_user">改善点</p>
+                            <p class="content_title another_user"><i class="fas fa-sort-amount-up icon"></i>改善点</p>
                             <p class="content_text another_user"><%= post.improvement_points %></p>
                         </div>
                     <% end %>
