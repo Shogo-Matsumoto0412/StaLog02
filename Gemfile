@@ -82,3 +82,7 @@ gem 'simple_calendar', '~> 2.0'
 
 # ChartKick
 gem "chartkick"
+
+# Kaminari
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
