@@ -16,7 +16,7 @@
                 <%= link_to field_path(@field.id), class: "content_textfield_links" do %>
                     <div class="index_content_textfield">
                         <p><%= post.field_content%></p>
-                        <p><i class="fas fa-clock"></i> <%= post.count_hour%>時間</p>
+                        <p><i class="fas fa-clock"></i><%= post.count_hour%>時間</p>
                     </div>
                 <% end %>
                 <%= link_to post_path(post.id) do %>
@@ -79,7 +79,7 @@
                     <% @field = Field.find_by(title: post.field_content) %>
                         <div class="index_content_textfield another_user">
                             <p><%= post.field_content%></p>
-                            <p><i class="fas fa-clock"></i> <%= post.count_hour%>時間</p>
+                            <p><i class="fas fa-clock"></i><%= post.count_hour%>時間</p>
                         </div>
                     <%= link_to post_path(post.id) do %>
                         <div class="index_content_block another_user">
