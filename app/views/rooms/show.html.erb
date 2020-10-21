@@ -1,25 +1,68 @@
 <% @entries.each do |e| %>
     <% unless e.user.id == current_user.id %>
-        <img src="<%= e.user.profile_image %>" class="icon_image" >
-        <%= e.user.name %>
-    <% end %>
-<% end %>
-<%= form_with model: @message do |f| %>
-    <%= f.text_field :message, placeholder: "メッセージを入力して下さい", size: 40 %>
-    <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.submit "投稿", class: "btn btn-primary" %>
-<% end %>
-<% if @messages.present? %>
-    <% @messages.each do |m| %>
-        <div>
-            <img src="<%= m.user.profile_image %>" class="post_icon_image" >
-            <%= m.user.name %>
-            <%= m.message %>
-            <% if m.user.id == current_user.id%>
-                <%= link_to "/messages/#{m.id}", method: :delete do %>
-                    <i class="fas fa-trash-alt"></i>
-                <% end %>
-            <% end %>
+        <div class="another_profile_wrapper dm">
+            <div class="another_profile_text_wrapper">
+                <div class="profile_icons another_user">
+                    <img src=<%= e.user.profile_image %> class = "icon_image profile_icons_image">
+                    <h1><%= e.user.name %></h1>
+                </div>
+                <div class="posts_index_goals profile_center another_user">
+                    <p class="goal_title another_user"><i class="fas fa-bullseye icon"></i>目標</p>
+                    <p class="goal_text"><%= e.user.goal %></p>
+                    <p class="goal_title another_user"><i class="fas fa-portrait icon"></i>自己紹介</p>
+                    <p class="goal_text profile_intro"><%= e.user.profile_text %></p>
+                </div>
+            </div>
         </div>
     <% end %>
 <% end %>
+<div class="dm_wrapper">
+    <div class="dm_forms">
+        <%= form_with model: @message do |f| %>
+            <%= f.text_field :message, placeholder: "メッセージを入力して下さい", size: 40 %>
+            <%= f.hidden_field :room_id, value: @room.id %>
+            <%= f.submit "投稿", class: "btn content_btn" %>
+        <% end %>
+    </div>
+    <div class="dm_contents_wrapper">
+        <% if @messages.present? %>
+            <% @messages.each do |m| %>
+                <% if m.user.id == current_user.id %>
+                    <div class="dm_content">
+                        <div>
+                            <img src="<%= m.user.profile_image %>" class="post_icon_image" >
+                            <div class="dm_profile">
+                                <%= m.user.name %>
+                            </div>
+                        </div>
+                        <div class="dm_message">
+                            <p class="dm_message_text icon"><%= m.message %></p>
+                            <div>
+                                <%= link_to "/messages/#{m.id}", method: :delete do %>
+                                    <i class="fas fa-trash-alt"></i>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                <% else %>
+                    <div class="dm_content">
+                        <div>
+                            <img src="<%= m.user.profile_image %>" class="post_icon_image" >
+                            <div class="dm_profile another_user">
+                                <%= m.user.name %>
+                            </div>
+                        </div>
+                        <div class="dm_message">
+                            <p class="dm_message_text another_user"><%= m.message %></p>
+                            <% if m.user.id == current_user.id%>
+                                <%= link_to "/messages/#{m.id}", method: :delete do %>
+                                    <i class="fas fa-trash-alt"></i>
+                                <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+    </div>
+</div>

@@ -7,9 +7,9 @@
                     <h1><%= @user.name %></h1>
                 </div>
                 <div class="posts_index_goals profile_center">
-                    <p class="goal_title">目標</p>
+                    <p class="goal_title"><i class="fas fa-bullseye icon"></i>目標</p>
                     <p class="goal_text"><%= @user.goal %></p>
-                    <p class="goal_title">自己紹介</p>
+                    <p class="goal_title"><i class="fas fa-portrait icon"></i>自己紹介</p>
                     <p class="goal_text profile_intro"><%= @user.profile_text %></p>
                     <div class="profile_edit">
                         <%= link_to edit_user_registration_path do %>
@@ -71,9 +71,9 @@
                         </div>
                     </div>
                     <div class="posts_index_goals profile_center another_user">
-                        <p class="goal_title another_user">目標</p>
+                        <p class="goal_title another_user"><i class="fas fa-bullseye icon"></i>目標</p>
                         <p class="goal_text"><%= @user.goal %></p>
-                        <p class="goal_title another_user">自己紹介</p>
+                        <p class="goal_title another_user"><i class="fas fa-portrait icon"></i>自己紹介</p>
                         <p class="goal_text profile_intro"><%= @user.profile_text %></p>
                     </div>
                 </div>
