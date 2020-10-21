@@ -5,6 +5,8 @@
 
 .field_name{
     text-align: center;
+    margin-top: 48px;
+    color: #037BFE;
 }
 
 .field_index_text{
@@ -90,4 +92,12 @@
     border-radius: 5px;
     width: 50%;
     text-align: center;
+}
+
+.graph_wrapper{
+    margin-bottom: 48px;
+}
+
+.count_number{
+    color: #037BFE;
 }
