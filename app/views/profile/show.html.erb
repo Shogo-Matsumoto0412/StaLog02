@@ -87,7 +87,7 @@
                 <% posts.each do |post| %>
                     <% if post.user.id == current_user.id %>
                         <% @field = Field.find_by(title: post.field_content) %>
-                        <div>
+                        <div class="calendar_posts">
                             <%= link_to field_path(@field.id), class: "calendar_text" do %>
                                 <%= "(" + post.field_content[0] + ")" %>
                                 <%= post.count_hour %>時間

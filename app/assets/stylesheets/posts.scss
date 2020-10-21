@@ -204,3 +204,16 @@
 .goal_title.another_user{
     background-color: #DD3444;
 }
+
+.calendar_posts a{
+    background-color: #037BFE;
+    color: #fff;
+    display: block;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.calendar_posts a:hover{
+    background-color: #3399ff;
+}
