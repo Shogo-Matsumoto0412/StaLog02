@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-  <%= link_to "Navbar", root_path, class: "navbar-brand text-white" %>
+  <div class="navbar_logo">
+    <%= link_to root_path, class: "navbar-brand text-white" do %>
+      <i class="fas fa-pencil-alt icon"></i><span class="logo">StaLog</span>
+    <% end %>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
