@@ -19,9 +19,17 @@
                     <% end %>
                 </div>
                 <div class="comment_text_contents">
-                    <p class="comment_profile_text"><%= link_to comment.user.name, profile_path(comment.user.id) %></p>
+                    <% if comment.user.id == current_user.id %>
+                        <p class="comment_profile_text"><%= link_to comment.user.name, profile_path(comment.user.id) %></p>
+                    <% else %>
+                        <p class="comment_profile_text another_user"><%= link_to comment.user.name, profile_path(comment.user.id) %></p>
+                    <% end %>
                     <div class="comment_content_texts">
-                        <p class="comment_text"><%= comment.content %></p>
+                        <% if comment.user.id == current_user.id %>
+                            <p class="comment_text"><%= comment.content %></p>
+                        <% else %>
+                            <p class="comment_text another_user"><%= comment.content %></p>
+                        <% end %>
                         <% if comment.user_id == current_user.id %>
                             <%= link_to "/posts/#{@post.id}/comments/#{comment.id}", method: :delete do %>
                                 <i class="fas fa-trash-alt"></i>
