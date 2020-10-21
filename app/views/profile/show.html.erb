@@ -17,15 +17,15 @@
                         <% end %>
                     </div>
                 </div>
-                <div class="current_profile_follow_text">
-                    <div class="follow_btns">
+                <div class="follow_btns">
+                    <div class="follows">
                         <%= link_to following_profile_path(@user.id) do %>    
-                            <p>フォロー<%= @user.followings.count %></p>
+                            フォロー<%= @user.followings.count %>
                         <% end %>
                     </div>
-                    <div class="follower_btns">
+                    <div class="follows">
                         <%= link_to followers_profile_path(@user.id) do %>    
-                            <p>フォロワー<%= @user.followers.count %></p>
+                            フォロワー<%= @user.followers.count %>
                         <% end %>
                     </div>
                 </div>
@@ -72,15 +72,15 @@
                                     <% end %>
                                 </div>
                             </div>
-                            <div class="another_follow_count">
-                                <div class="follow_btns">
+                            <div class="follow_btns another_user">
+                                <div class="follows another_user">
                                     <%= link_to following_profile_path(@user.id) do %>    
-                                        <p>フォロー<%= @user.followings.count %></p>
+                                        フォロー<%= @user.followings.count %>
                                     <% end %>
                                 </div>
-                                <div class="follower_btns">
+                                <div class="follows another_user">
                                     <%= link_to followers_profile_path(@user.id) do %>    
-                                        <p>フォロワー<%= @user.followers.count %></p>
+                                        フォロワー<%= @user.followers.count %>
                                     <% end %>
                                 </div>
                             </div>

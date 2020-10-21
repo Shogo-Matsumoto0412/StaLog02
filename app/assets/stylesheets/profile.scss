@@ -68,12 +68,10 @@
 
 .posts_index_button_trash.profile{
     text-align: right;
-    padding: 10px 10px 0 0;
 }
 
 .profile_edit{
     text-align: right;
-    margin: 10px 10px 0 0;
 }
 
 .profile_icons{
@@ -117,12 +115,6 @@
 }
 
 .another_profile_buttons{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 24px;
-}
-
-.another_follow_count{
     display: flex;
     justify-content: space-around;
     margin-top: 24px;
@@ -176,42 +168,6 @@
     background-color: #DD3444;
 }
 
-.current_profile_follow_text p>a{
-    margin-left: 8px;
-    color: #fff;
-    display: inline-block;
-    padding: 10px 10px;
-}
-
-.current_profile_follow_text p{
-    background-color: #037BFE;
-    color: #fff;
-    border-radius: 5px;
-    padding: 0 5px;
-}
-
-.current_profile_follow_text p:hover{
-    background-color: #3399ff;
-}
-
-.another_follow_count p>a{
-    margin-left: 8px;
-    color: #fff;
-    display: inline-block;
-    padding: 10px 10px;
-}
-
-.another_follow_count p{
-    background-color: #DD3444;
-    color: #fff;
-    border-radius: 5px;
-    padding: 0 5px;
-}
-
-.another_follow_count p:hover{
-    background-color: #ff3366;
-}
-
 .follows_wrapper{
     display: flex;
     justify-content: center;
@@ -231,8 +187,16 @@
     margin-top: 16px;
 }
 
+.follow_icons p:hover{
+    background-color: #ff3366;
+}
+
 .follow_icons.current_user p {
     background-color: #037BFE;
+}
+
+.follow_icons.current_user p:hover{
+    background-color: #3399ff;
 }
 
 .follow_icons{
@@ -263,4 +227,30 @@
 
 .follows_all_wrapper{
     text-align: center;
+}
+
+.follow_btns{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 16px;
+}
+
+.follow_btns a{
+    color: #fff;
+    display: block;
+    background-color: #037BFE;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.follow_btns.another_user a{
+    background-color: #DD3444;
+}
+
+.follow_btns a:hover{
+    background-color: #3399ff;
+}
+
+.follow_btns.another_user a:hover{
+    background-color: #ff3366;
 }

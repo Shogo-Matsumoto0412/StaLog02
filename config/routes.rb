@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  get '/users/index', to: 'profile#index', as: 'users'
   resources :messages, only: [:create, :destroy]
   resources :rooms, only: [:create,:show]
   devise_for :users, controllers: {

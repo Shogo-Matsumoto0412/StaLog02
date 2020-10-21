@@ -1,33 +1,31 @@
-<p class="follows_top_btn">
-    <i class="fas fa-user icon"></i>
-    <%= link_to "プロフィールに戻る", profile_path(@user) %>
-</p>
-<% @users.each do |user| %>
-    <% if user.id == current_user.id %>
-        <div class="follows_wrapper current_user">
-            <div class="follow_icons current_user">
+<% if user.id == current_user.id %>
+    <div class="follows_wrapper current_user">
+        <div class="follow_icons current_user">
+            <%= link_to profile_path(user.id) do %>
                 <img src="<%= user.profile_image%>" class="post_icon_image">
                 <p><%= user.name %></p>
-            </div>
-            <div class="posts_index_goals profile_center">
-                <p class="goal_title"><i class="fas fa-bullseye icon"></i>目標</p>
-                <p class="goal_text"><%= @user.goal %></p>
-                <p class="goal_title"><i class="fas fa-portrait icon"></i>自己紹介</p>
-                <p class="goal_text profile_intro"><%= @user.profile_text %></p>
-            </div>
+            <% end %>
         </div>
-    <% else %>
-        <div class="follows_wrapper">
-            <div class="follow_icons">
+        <div class="posts_index_goals profile_center">
+            <p class="goal_title"><i class="fas fa-bullseye icon"></i>目標</p>
+            <p class="goal_text"><%= user.goal %></p>
+            <p class="goal_title"><i class="fas fa-portrait icon"></i>自己紹介</p>
+            <p class="goal_text profile_intro"><%= user.profile_text %></p>
+        </div>
+    </div>
+<% else %>
+    <div class="follows_wrapper">
+        <div class="follow_icons">
+            <%= link_to profile_path(user.id) do %>
                 <img src="<%= user.profile_image%>" class="post_icon_image">
                 <p><%= user.name %></p>
-            </div>
-            <div class="posts_index_goals profile_center another_user">
-                <p class="goal_title another_user"><i class="fas fa-bullseye icon"></i>目標</p>
-                <p class="goal_text"><%= @user.goal %></p>
-                <p class="goal_title another_user"><i class="fas fa-portrait icon"></i>自己紹介</p>
-                <p class="goal_text profile_intro"><%= @user.profile_text %></p>
-            </div>
+            <% end %>
         </div>
-    <% end %>
+        <div class="posts_index_goals profile_center another_user">
+            <p class="goal_title another_user"><i class="fas fa-bullseye icon"></i>目標</p>
+            <p class="goal_text"><%= user.goal %></p>
+            <p class="goal_title another_user"><i class="fas fa-portrait icon"></i>自己紹介</p>
+            <p class="goal_text profile_intro"><%= user.profile_text %></p>
+        </div>
+    </div>
 <% end %>

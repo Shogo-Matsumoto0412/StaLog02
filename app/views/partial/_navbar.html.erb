@@ -10,6 +10,9 @@
           <%= link_to "新規投稿", new_post_path, class: "nav-link text-white" %>
         </li>
         <li class="nav-item">
+          <%= link_to "ユーザー検索", users_path, class: "nav-link text-white" %>
+        </li>
+        <li class="nav-item">
           <%= link_to profile_path(current_user.id), class: "nav-link text-white" do %>
             <%= current_user.name %>
             <img src="<%= current_user.profile_image%>" class="navbar_icon_image navbar_icon_margin">

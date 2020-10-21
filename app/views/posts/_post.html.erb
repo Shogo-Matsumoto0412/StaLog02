@@ -39,17 +39,17 @@
                             <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
                         </div>
                         <div class="posts_index_button_items">
-                            <div>
+                            <div class="icon">
                                 <% if current_user.liked_by?(post.id) %>
                                     <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
                                         <i class="fa fa-heart unlike-btn"></i>
                                     <% end %>
-                                    <span class="icon"><%= post.likes.count %></span>
+                                    <span><%= post.likes.count %></span>
                                 <% else %>
                                     <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
                                         <i class="fa fa-heart like-btn"></i>
                                     <% end %>
-                                    <span class="icon"><%= post.likes.count %>
+                                    <span><%= post.likes.count %>
                                 <% end %>
                             </div>
                             <div class="posts_index_button_trash">

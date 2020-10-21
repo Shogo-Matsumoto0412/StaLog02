@@ -1,5 +1,13 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!, only: [:show]
+
+  def index
+    @search = User.ransack(params[:q])
+    @users = @search.result.order(created_at: :desc).page(params[:page]).per(10)
+    @search2 = User.ransack(params[:q])
+    @u = @search2.result.order(created_at: :desc)
+  end
+
   def show
     @posts = Post.all
     @user = User.find_by(id: params[:id])
