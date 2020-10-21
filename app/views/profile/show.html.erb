@@ -119,7 +119,7 @@
 <div class="posts_index_wrapper">
     <% @user_posts.each do |post| %>
         <div id="post_<%= post.id %>">
-            <%= render 'posts/show', post: post %>
+            <%= render 'posts/post', post: post %>
         </div>
     <% end %>
 </div>
