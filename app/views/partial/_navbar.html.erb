@@ -33,8 +33,11 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "ログイン", new_user_session_path, class: "nav-link text-white", method: :delete %>
+        <li class="nav-item navbar_flex">
+          <i class="fas fa-sign-in-alt icon"></i>
+          <div>
+            <%= link_to "ログイン", new_user_session_path, class: "nav-link text-white", method: :delete %>
+          </div>
         </li>
         <li class="nav-item">
           <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white", method: :delete %>
