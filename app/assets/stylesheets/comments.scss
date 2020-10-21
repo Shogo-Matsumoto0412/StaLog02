@@ -30,6 +30,15 @@
 
 .comment_top{
     margin-top: 32px;
+    background-color: #037BFE;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.comment_top.another_user{
+    background-color: #DD3444;
 }
 
 .fa-comments{

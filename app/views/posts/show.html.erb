@@ -6,7 +6,11 @@
     </div>
     <%# コメントフォーム %>
     <div class="posts_show_comment_wrapper">
-        <p class="comment_top"><i class="fas fa-comments"></i>コメント</p>
+        <% if @post.user.id == current_user.id %>
+            <p class="comment_top"><i class="fas fa-comments"></i>コメント</p>
+        <% else %>
+            <p class="comment_top another_user"><i class="fas fa-comments"></i>コメント</p>
+        <% end %>
         <% @comments.each do |comment| %>
             <div class="comment_content_wrapper">
                 <div>
