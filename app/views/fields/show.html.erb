@@ -4,25 +4,49 @@
         <%= line_chart @graph %>
     </div>
     <div class="fields_show_wrapper">
-        <div>
+        <div class="index_content_text">
             <% @posts.each do |post| %>
-                <% if post.user.id == current_user.id %>
-                    <p>内容</p>
-                    <%= post.teaching_materials %>
-                    <p>実行</p>
-                    <%= post.post_content %>
-                    <p>改善点</p>
-                    <%= post.improvement_points %>
-                    <p><%= post.count_hour %>時間</p>
-                    <p><%= post.created_at.to_date %></p>
+                <% @field = Field.find_by(title: post.field_content) %>
+                <div class="field_posts_title">
+                    <p class="blue"><i class="fas fa-clock icon"></i><%= post.count_hour%>時間</p>
+                </div>
+                <%= link_to post_path(post.id) do %>
+                    <div class="index_content_block">
+                        <p class="content_title"><i class="fas fa-graduation-cap icon"></i>内容</p>
+                        <p class="content_text content"><%= post.teaching_materials %></p>
+                    </div>
+                    <div class="index_content_block">
+                        <p class="content_title"><i class="fas fa-book icon"></i>実行</p>
+                        <p class="content_text"><%= post.post_content %></p>
+                    </div>
+                    <div class="index_content_block">
+                        <p class="content_title"><i class="fas fa-sort-amount-up icon"></i>改善点</p>
+                        <p class="content_text"><%= post.improvement_points %></p>
+                    </div>
                 <% end %>
+                <div class="posts_index_button">
+                    <div class="index_content_items">
+                        <div class="field_date">
+                            <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
+                        </div>
+                    </div>
+                </div>
             <% end %>
-            <%= paginate @posts %>
         </div>
         <div>
             <% @posts.group("date(created_at)").sum(:count_hour).each do |time| %>
-                <p class="count_hour">日付<%= time[0] %>　<%= time[1] %>時間</p>
-            <% end %>
+                <div class="count_hour_wrapper">
+                    <div class="field_record">
+                        <p class="count_hour date">日付</p>
+                        <p class="count_number"><%= time[0] %></p>
+                    </div>
+                    <div class="field_record">
+                        <p class="count_hour time">時間</p>
+                        <p class="count_number"><%= time[1] %>時間</p>
+                    </div>
+                </div>
+            <% end %> 
+            <%= paginate @posts%>
         </div>
     <div>
 </div>

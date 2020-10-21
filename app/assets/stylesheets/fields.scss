@@ -46,3 +46,48 @@
 .field_content_wrapper{
     margin: 24px;
 }
+
+.field_date{
+    margin-bottom: 32px;
+}
+
+.count_hour_wrapper{
+    text-align: center;
+    border-bottom: 1px solid #037BFE;
+    margin-bottom: 24px;
+}
+
+.field_record{
+    display: flex;
+}
+
+.count_hour{
+    background-color: #037BFE;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.count_hour.date{
+    margin-bottom: 1px;
+}
+
+.count_number{
+    align-self: center;
+    padding-left: 16px;
+}
+
+.field_posts_title{
+    display: flex;
+    justify-content: space-around;
+}
+
+.field_posts_title p{
+    color: #fff;
+    background-color: #037BFE;
+    padding: 10px;
+    margin: 0 1px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+}
