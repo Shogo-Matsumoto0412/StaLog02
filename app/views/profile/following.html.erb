@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+    <img src="<%= user.profile_image%>" class="post_icon_image">
+    <%= user.name %>
+<% end %>
+<%= link_to "プロフィールに戻る", profile_path(@user) %>

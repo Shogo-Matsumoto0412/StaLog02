@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :fields, only: [:index, :new, :create, :show, :destroy]
-  resources :profile, only: [:show]
+  resources :profile, only: [:show] do
+    member do
+      get :following, :followers
+    end
+  end
   resources :messages, only: [:create, :destroy]
   resources :rooms, only: [:create,:show]
   devise_for :users, controllers: {

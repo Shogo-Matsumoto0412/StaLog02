@@ -18,8 +18,8 @@
                     </div>
                 </div>
                 <div class="current_profile_follow_text">
-                    <p>フォロー<%= @user.followings.count %></p>
-                    <p>フォロワー<%= @user.followers.count %></p>
+                    <p>フォロー<%= link_to @user.followings.count, following_profile_path(@user.id) %></p>
+                    <p>フォロワー<%= link_to @user.followers.count, followers_profile_path(@user.id) %></p>
                 </div>
                 <% unless @user.id == current_user.id %>
                     <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
@@ -65,8 +65,8 @@
                                 </div>
                             </div>
                             <div class="another_follow_count">
-                                <p>フォロー<%= @user.followings.count %></p>
-                                <p>フォロワー<%= @user.followers.count %></p>
+                                <p>フォロー<%= link_to @user.followings.count, following_profile_path(@user.id) %></p>
+                                <p>フォロワー<%= link_to @user.followers.count, followers_profile_path(@user.id) %></p>
                             </div>
                         </div>
                     </div>
