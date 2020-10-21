@@ -80,8 +80,20 @@
     text-align: center;
 }
 
+.profile_icons h1{
+    margin-bottom: 24px;
+    background-color: #037BFE;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 .profile_icons.another_user{
     margin-right: 40px;
+}
+
+.profile_icons.another_user h1{
+    background-color: #DD3444;
 }
 
 .profile_icons_image{
