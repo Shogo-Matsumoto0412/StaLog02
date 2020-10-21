@@ -1,3 +1,7 @@
+.field_name_wrapper{
+    text-align: center;
+}
+
 .fields_show_wrapper{
     display: flex;
     justify-content: center;
@@ -7,6 +11,10 @@
     text-align: center;
     margin-top: 48px;
     color: #037BFE;
+    display: inline-block;
+    border: 2px solid #037BFE;
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 .field_index_text{
