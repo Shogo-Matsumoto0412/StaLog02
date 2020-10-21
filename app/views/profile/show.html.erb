@@ -18,8 +18,16 @@
                     </div>
                 </div>
                 <div class="current_profile_follow_text">
-                    <p>フォロー<%= link_to @user.followings.count, following_profile_path(@user.id) %></p>
-                    <p>フォロワー<%= link_to @user.followers.count, followers_profile_path(@user.id) %></p>
+                    <div class="follow_btns">
+                        <%= link_to following_profile_path(@user.id) do %>    
+                            <p>フォロー<%= @user.followings.count %></p>
+                        <% end %>
+                    </div>
+                    <div class="follower_btns">
+                        <%= link_to followers_profile_path(@user.id) do %>    
+                            <p>フォロワー<%= @user.followers.count %></p>
+                        <% end %>
+                    </div>
                 </div>
                 <% unless @user.id == current_user.id %>
                     <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
@@ -65,8 +73,16 @@
                                 </div>
                             </div>
                             <div class="another_follow_count">
-                                <p>フォロー<%= link_to @user.followings.count, following_profile_path(@user.id) %></p>
-                                <p>フォロワー<%= link_to @user.followers.count, followers_profile_path(@user.id) %></p>
+                                <div class="follow_btns">
+                                    <%= link_to following_profile_path(@user.id) do %>    
+                                        <p>フォロー<%= @user.followings.count %></p>
+                                    <% end %>
+                                </div>
+                                <div class="follower_btns">
+                                    <%= link_to followers_profile_path(@user.id) do %>    
+                                        <p>フォロワー<%= @user.followers.count %></p>
+                                    <% end %>
+                                </div>
                             </div>
                         </div>
                     </div>

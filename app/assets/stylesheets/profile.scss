@@ -178,10 +178,38 @@
 
 .current_profile_follow_text p>a{
     margin-left: 8px;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 10px;
+}
+
+.current_profile_follow_text p{
+    background-color: #037BFE;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+
+.current_profile_follow_text p:hover{
+    background-color: #3399ff;
 }
 
 .another_follow_count p>a{
     margin-left: 8px;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 10px;
+}
+
+.another_follow_count p{
+    background-color: #DD3444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+
+.another_follow_count p:hover{
+    background-color: #ff3366;
 }
 
 .follows_wrapper{
@@ -201,6 +229,10 @@
     padding: 10px 20px;
     border-radius: 5px;
     margin-top: 16px;
+}
+
+.follow_icons.current_user p {
+    background-color: #037BFE;
 }
 
 .follow_icons{

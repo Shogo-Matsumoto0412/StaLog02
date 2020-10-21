@@ -3,16 +3,31 @@
     <%= link_to "プロフィールに戻る", profile_path(@user) %>
 </p>
 <% @users.each do |user| %>
-    <div class="follows_wrapper">
-        <div class="follow_icons">
-            <img src="<%= user.profile_image%>" class="post_icon_image">
-            <p><%= user.name %></p>
+    <% if user.id == current_user.id %>
+        <div class="follows_wrapper current_user">
+            <div class="follow_icons current_user">
+                <img src="<%= user.profile_image%>" class="post_icon_image">
+                <p><%= user.name %></p>
+            </div>
+            <div class="posts_index_goals profile_center">
+                <p class="goal_title"><i class="fas fa-bullseye icon"></i>目標</p>
+                <p class="goal_text"><%= @user.goal %></p>
+                <p class="goal_title"><i class="fas fa-portrait icon"></i>自己紹介</p>
+                <p class="goal_text profile_intro"><%= @user.profile_text %></p>
+            </div>
         </div>
-        <div class="posts_index_goals profile_center another_user">
-            <p class="goal_title another_user"><i class="fas fa-bullseye icon"></i>目標</p>
-            <p class="goal_text"><%= @user.goal %></p>
-            <p class="goal_title another_user"><i class="fas fa-portrait icon"></i>自己紹介</p>
-            <p class="goal_text profile_intro"><%= @user.profile_text %></p>
+    <% else %>
+        <div class="follows_wrapper">
+            <div class="follow_icons">
+                <img src="<%= user.profile_image%>" class="post_icon_image">
+                <p><%= user.name %></p>
+            </div>
+            <div class="posts_index_goals profile_center another_user">
+                <p class="goal_title another_user"><i class="fas fa-bullseye icon"></i>目標</p>
+                <p class="goal_text"><%= @user.goal %></p>
+                <p class="goal_title another_user"><i class="fas fa-portrait icon"></i>自己紹介</p>
+                <p class="goal_text profile_intro"><%= @user.profile_text %></p>
+            </div>
         </div>
-    </div>
+    <% end %>
 <% end %>
