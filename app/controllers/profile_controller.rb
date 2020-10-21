@@ -25,12 +25,12 @@ class ProfileController < ApplicationController
 
   def following
     @user = User.find_by(id: params[:id])
-    @users = @user.followings
+    @users = @user.followings.page(params[:page]).per(10)
 
   end
 
   def followers
     @user = User.find_by(id: params[:id])
-    @users = @user.followers
+    @users = @user.followers.page(params[:page]).per(10)
   end
 end

@@ -176,6 +176,59 @@
     background-color: #DD3444;
 }
 
+.current_profile_follow_text p>a{
+    margin-left: 8px;
+}
+
 .another_follow_count p>a{
     margin-left: 8px;
+}
+
+.follows_wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.follow_icons{
+    align-self: center;
+    margin-right: 16px;
+}
+
+.follow_icons p{
+    background-color: #DD3444;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 16px;
+}
+
+.follow_icons{
+    text-align: center;
+}
+
+.follows_top_btn{
+    background-color: #037BFE;
+    color: #fff;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 24px;
+}
+
+.follows_top_btn a{
+    color: #fff;
+    display: inline-block;
+    padding: 10px 20px 10px 0;
+}
+
+.follows_top_btn.another_user a{
+    background-color: #DD3444
+}
+
+.follows_top_btn i{
+    padding-left: 10px;
+}
+
+.follows_all_wrapper{
+    text-align: center;
 }
