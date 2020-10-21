@@ -2,13 +2,13 @@
     <div class="search_word">
         <%= search_form_for @search do |f| %>
             <%= f.search_field :teaching_materials_cont %>
-            <%= f.submit "内容検索", class: "btn btn-primary"%>
+            <%= f.submit "内容検索", class: "btn content_btn btn_margin_left"%>
         <% end %>
     </div>
     <div class="search_tag">
         <%= search_form_for @search2 do |f| %>
             <%= f.search_field :field_content_cont %>
-            <%= f.submit "分野検索", class: "btn btn-primary"%>
+            <%= f.submit "分野検索", class: "btn content_btn btn_margin_left"%>
         <% end %>
     </div>
 </div>
