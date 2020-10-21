@@ -17,6 +17,7 @@
                     <p><%= post.created_at.to_date %></p>
                 <% end %>
             <% end %>
+            <%= paginate @posts %>
         </div>
         <div>
             <% @posts.group("date(created_at)").sum(:count_hour).each do |time| %>

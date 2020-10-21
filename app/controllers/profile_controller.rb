@@ -3,6 +3,7 @@ class ProfileController < ApplicationController
   def show
     @posts = Post.all
     @user = User.find_by(id: params[:id])
+    @user_posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(4)
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id

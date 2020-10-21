@@ -115,9 +115,10 @@
     <% end %>
 </div>
 <div class="posts_index_wrapper">
-    <% @user.posts.each do |post| %>
+    <% @user_posts.each do |post| %>
         <div id="post_<%= post.id %>">
             <%= render 'post', post: post %>
         </div>
     <% end %>
 </div>
+<%= paginate @user_posts %>

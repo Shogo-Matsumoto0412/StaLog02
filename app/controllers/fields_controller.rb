@@ -13,7 +13,7 @@ class FieldsController < ApplicationController
   def show
     @field = Field.find_by(id: params[:id])
     @post = current_user.posts.find_by(field_content: @field.title)
-    @posts = current_user.posts.where(field_content: @field.title).order(created_at: :desc)
+    @posts = current_user.posts.where(field_content: @field.title).order(created_at: :desc).page(params[:page]).per(10)
     @graph = @posts.group("date(created_at)").sum(:count_hour)
   end
 
