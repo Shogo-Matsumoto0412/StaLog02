@@ -44,6 +44,11 @@
 .navbar_logo a{
     border: 2px solid #fff;
     padding: 0 15px;
+    border-radius: 5px;
+}
+
+.navbar_logo a:hover{
+    background-color: #3399ff;
 }
 
 .logo{
@@ -67,4 +72,8 @@
 .fa-plus{
     align-self: center;
     margin-left: 5px;
+}
+
+.fa-sign-in-alt{
+    align-self: center;
 }
