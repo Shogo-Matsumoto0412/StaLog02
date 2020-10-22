@@ -1,129 +1,127 @@
 <% if user_signed_in? %>
     <% if post.user.id == current_user.id%>
         <div class="index_content_wrapper">
-            <div class="posts_wrapper">
-                <div class="index_content_profile">
-                    <%= link_to profile_path(post.user.id) do %>
-                        <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
-                        <p class="index_content_name"><i class="fas fa-user icon"></i><%= post.user.name%></p>
-                    <% end %>
-                    <div class="posts_index_goals">
-                        <p class="goal_title"><i class="fas fa-bullseye icon"></i>目標</p>
-                        <p class="goal_text"><%= post.user.goal %></p>
-                    </div>
+            <div class="index_content_profile">
+                <%= link_to profile_path(post.user.id) do %>
+                    <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
+                    <p class="index_content_name"><i class="fas fa-user icon"></i><%= post.user.name%></p>
+                <% end %>
+                <div class="posts_index_goals">
+                    <p class="goal_title"><i class="fas fa-bullseye icon"></i>目標</p>
+                    <p class="goal_text"><%= post.user.goal %></p>
                 </div>
-                <div class="index_content_text">
-                    <% @field = Field.find_by(title: post.field_content) %>
-                    <%= link_to field_path(@field.id), class: "content_textfield_links" do %>
-                        <div class="index_content_textfield">
-                            <p><i class="fas fa-pen icon"></i><%= post.field_content%></p>
-                            <p><i class="fas fa-clock icon"></i><%= post.count_hour%>時間</p>
+            </div>
+            <div class="index_content_text">
+                <% @field = Field.find_by(title: post.field_content) %>
+                <%= link_to field_path(@field.id), class: "content_textfield_links" do %>
+                    <div class="index_content_textfield">
+                        <p><i class="fas fa-pen icon"></i><%= post.field_content%></p>
+                        <p><i class="fas fa-clock icon"></i><%= post.count_hour%>時間</p>
+                    </div>
+                <% end %>
+                <%= link_to post_path(post.id) do %>
+                    <div class="index_content_block">
+                        <p class="content_title"><i class="fas fa-graduation-cap icon"></i>内容</p>
+                        <p class="content_text content"><%= post.teaching_materials %></p>
+                    </div>
+                    <div class="index_content_block">
+                        <p class="content_title"><i class="fas fa-book icon"></i>実行</p>
+                        <p class="content_text"><%= post.post_content %></p>
+                    </div>
+                    <div class="index_content_block">
+                        <p class="content_title"><i class="fas fa-sort-amount-up icon"></i>改善点</p>
+                        <p class="content_text"><%= post.improvement_points %></p>
+                    </div>
+                <% end %>
+                <div class="posts_index_button">
+                    <div class="index_content_items">
+                        <div>
+                            <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
                         </div>
-                    <% end %>
-                    <%= link_to post_path(post.id) do %>
-                        <div class="index_content_block">
-                            <p class="content_title"><i class="fas fa-graduation-cap icon"></i>内容</p>
-                            <p class="content_text content"><%= post.teaching_materials %></p>
-                        </div>
-                        <div class="index_content_block">
-                            <p class="content_title"><i class="fas fa-book icon"></i>実行</p>
-                            <p class="content_text"><%= post.post_content %></p>
-                        </div>
-                        <div class="index_content_block">
-                            <p class="content_title"><i class="fas fa-sort-amount-up icon"></i>改善点</p>
-                            <p class="content_text"><%= post.improvement_points %></p>
-                        </div>
-                    <% end %>
-                    <div class="posts_index_button">
-                        <div class="index_content_items">
+                        <div class="posts_index_button_items">
                             <div>
-                                <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
+                                <% if current_user.liked_by?(post.id) %>
+                                    <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
+                                        <i class="fa fa-heart unlike-btn"></i>
+                                    <% end %>
+                                    <span class="icon"><%= post.likes.count %></span>
+                                <% else %>
+                                    <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
+                                        <i class="fa fa-heart like-btn"></i>
+                                    <% end %>
+                                    <span class="icon"><%= post.likes.count %>
+                                <% end %>
                             </div>
-                            <div class="posts_index_button_items">
-                                <div class="icon">
-                                    <% if current_user.liked_by?(post.id) %>
-                                        <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
-                                            <i class="fa fa-heart unlike-btn"></i>
-                                        <% end %>
-                                        <span><%= post.likes.count %></span>
-                                    <% else %>
-                                        <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
-                                            <i class="fa fa-heart like-btn"></i>
-                                        <% end %>
-                                        <span><%= post.likes.count %>
-                                    <% end %>
-                                </div>
-                                <div class="posts_index_button_trash">
-                                    <%= link_to edit_post_path(post.id) do %>
-                                        <i class="fas fa-edit icon"></i>
-                                    <% end %>
-                                    <%= link_to "/posts/#{post.id}", method: :delete do %>
-                                        <i class="fas fa-trash-alt"></i>
-                                    <% end %>
-                                </div>
+                            <div class="posts_index_button_trash">
+                                <%= link_to edit_post_path(post.id) do %>
+                                    <i class="fas fa-edit icon"></i>
+                                <% end %>
+                                <%= link_to "/posts/#{post.id}", method: :delete do %>
+                                    <i class="fas fa-trash-alt"></i>
+                                <% end %>
                             </div>
                         </div>
                     </div>
                 </div>
-            <div>
+            </div>
         </div>
     <% else %>
-        <% if current_user.following?(post.user) %>
-            <div class="index_content_wrapper">
-                <div class="posts_wrapper">
-                    <div class="index_content_profile">
-                        <%= link_to profile_path(post.user.id) do %>
-                            <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
-                            <p class="index_content_name another_user"><i class="fas fa-user icon"></i><%= post.user.name%></p>
-                        <% end %>
-                        <div class="posts_index_goals another_user">
-                            <p class="goal_title another_user"><i class="fas fa-bullseye icon"></i>目標</p>
-                            <p class="goal_text another_user"><%= post.user.goal %></p>
-                        </div>
+        <div class="index_content_wrapper">
+            <div class="index_content_profile another_user">
+                <%= link_to profile_path(post.user.id) do %>
+                    <img src="<%= post.user.profile_image%>" class="post_icon_image"><br>
+                    <p class="index_content_name another_user"><i class="fas fa-user icon"></i><%= post.user.name%></p>
+                <% end %>
+                <div class="posts_index_goals another_user">
+                    <p class="goal_title another_user"><i class="fas fa-bullseye icon"></i>目標</p>
+                    <p class="goal_text another_user"><%= post.user.goal %></p>
+                </div>
+            </div>
+            <div class="index_content_text another_user">
+                <% @field = Field.find_by(title: post.field_content) %>
+                <%= link_to "#", class: "content_textfield_links  another_user" do %>
+                    <div class="index_content_textfield another_user">
+                        <p><i class="fas fa-pen icon"></i><%= post.field_content%></p>
+                        <p><i class="fas fa-clock icon"></i><%= post.count_hour%>時間</p>
                     </div>
-                    <div class="index_content_text">
-                        <% @field = Field.find_by(title: post.field_content) %>
-                            <div class="index_content_textfield another_user">
-                                <p><i class="fas fa-pen icon"></i><%= post.field_content%></p>
-                                <p><i class="fas fa-clock icon"></i><%= post.count_hour%>時間</p>
-                            </div>
-                        <%= link_to post_path(post.id) do %>
-                            <div class="index_content_block another_user">
-                                <p class="content_title another_user"><i class="fas fa-graduation-cap icon"></i>内容</p>
-                                <p class="content_text content another_user"><%= post.teaching_materials %></p>
-                            </div>
-                            <div class="index_content_block another_user">
-                                <p class="content_title another_user"><i class="fas fa-book icon"></i>実行</p>
-                                <p class="content_text another_user"><%= post.post_content %></p>
-                            </div>
-                            <div class="index_content_block another_user">
-                                <p class="content_title another_user"><i class="fas fa-sort-amount-up icon"></i>改善点</p>
-                                <p class="content_text another_user"><%= post.improvement_points %></p>
-                            </div>
-                        <% end %>
-                        <div class="posts_index_button">
-                            <div class="index_content_items">
-                                <div>
-                                    <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
-                                </div>
-                                <div>
-                                    <% if current_user.liked_by?(post.id) %>
-                                        <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
-                                            <i class="fa fa-heart unlike-btn"></i>
-                                        <% end %>
-                                        <%= post.likes.count %>
-                                    <% else %>
-                                        <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
-                                            <i class="fa fa-heart like-btn"></i>
-                                        <% end %>
-                                        <%= post.likes.count %>
+                <% end %>
+                <%= link_to post_path(post.id) do %>
+                    <div class="index_content_block another_user">
+                        <p class="content_title another_user"><i class="fas fa-graduation-cap icon"></i>内容</p>
+                        <p class="content_text content another_user"><%= post.teaching_materials %></p>
+                    </div>
+                    <div class="index_content_block another_user">
+                        <p class="content_title another_user"><i class="fas fa-book icon"></i>実行</p>
+                        <p class="content_text another_user"><%= post.post_content %></p>
+                    </div>
+                    <div class="index_content_block another_user">
+                        <p class="content_title another_user"><i class="fas fa-sort-amount-up icon"></i>改善点</p>
+                        <p class="content_text another_user"><%= post.improvement_points %></p>
+                    </div>
+                <% end %>
+                <div class="posts_index_button">
+                    <div class="index_content_items">
+                        <div>
+                            <%= post.start_time.strftime("%Y-%m-%d %H:%M") %>
+                        </div>
+                        <div class="posts_index_button_items">
+                            <div>
+                                <% if current_user.liked_by?(post.id) %>
+                                    <%= link_to destroy_like_path(post), class: "like-link", method: :DELETE, remote: true do %>
+                                        <i class="fa fa-heart unlike-btn"></i>
                                     <% end %>
-                                </div>
+                                    <span class="icon"><%= post.likes.count %></span>
+                                <% else %>
+                                    <%= link_to create_like_path(post), class: "like-link", method: :POST, remote: true do %>
+                                        <i class="fa fa-heart like-btn"></i>
+                                    <% end %>
+                                    <span class="icon"><%= post.likes.count %>
+                                <% end %>
                             </div>
                         </div>
                     </div>
                 </div>
-            <div>
-        <% end %>
+            </div>
+        </div>
     <% end %>
 <% end %>
