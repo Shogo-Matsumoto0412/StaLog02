@@ -13,12 +13,10 @@
 }
 
 .index_content_wrapper{
-    display: flex;
+    display: block;
     justify-content: center;
-    border-bottom: 1px solid #037BFE;
     width: 100%;
     align-items: center;
-    padding: 32px 0;
 }
 
 .index_content_text{
@@ -216,4 +214,11 @@
 
 .calendar_posts a:hover{
     background-color: #3399ff;
+}
+
+.posts_wrapper{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #037BFE;
+    padding: 32px 0;
 }
