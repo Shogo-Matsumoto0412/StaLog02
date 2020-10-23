@@ -1,38 +1,42 @@
 <div class="posts_new_forms_wrapper">
+    <div class="field_name_wrapper form_margin_bottom">
+        <h1 class="field_name">投稿編集</h1>
+    </div>
     <%= form_with model: @post do |f| %>
-        <div class="posts_new_wrapper">
-            <p><span><i class="fas fa-graduation-cap icon"></i>内容</span></p>
-            <div class="cp_iptxt">
-                <%= f.text_area :teaching_materials, placeholder: "内容・テーマ" %>
-            </div>
-        </div>
-        <div class="posts_new_wrapper">
-            <p><span><i class="fas fa-book icon"></i>実行</span></p>
-            <div class="cp_iptxt long">
-                <%= f.text_area :post_content, placeholder: "実行したこと" %>
-            </div>
-        </div>
-        <div class="posts_new_wrapper">
-            <p><span><i class="fas fa-sort-amount-up icon"></i>改善点</span></p>
-            <div class="cp_iptxt long">
-                <%= f.text_area :improvement_points, placeholder: "改善の必要があること" %>
-            </div>
-        </div>
-        <div class="record_wrapper">
-            <div class="posts_new_wrapper">
-                <p><span><i class="fas fa-pen icon"></i>分野</span>　・　<span><i class="fas fa-clock icon"></i>学習時間</span></p>
-                <div class="cp_iptxt">
-                    <%= f.select :field_content, @fields.map{|field|[field.title, field.title]} %>
-                    <%= f.number_field :count_hour, step: '0.1' %>時間
-                <div>
-            </div>
-        </div>
-        <div class="posts_new_wrapper">
-            <p><span><i class="fas fa-calendar-alt icon"></i>学習日時</span></p>
-            <div class="cp_iptxt">
-                <%= f.datetime_select :start_time %>
-            </div>
-        </div>
-        <%= f.submit "更新", class: "btn content_btn"%>
+        <table class="form-table">
+            <tbody>
+                <tr>
+                    <th>内容・テーマ</th>
+                    <td>
+                        <%= f.text_area :teaching_materials, class: "forms", class: "form-control", size: "60" %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>実行したこと</th>
+                    <td>
+                        <%= f.text_area :post_content, class: "forms", class: "form-control", size: "60" %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>改善点</th>
+                    <td>
+                        <%= f.text_area :improvement_points, class: "forms", class: "form-control", size: "60" %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>分野</th>
+                    <td>
+                        <%= f.select :field_content, @fields.map{|field|[field.title, field.title]}, class: "forms", class: "form-control", size: "60" %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>学習時間</th>
+                    <td>
+                        <%= f.number_field :count_hour, step: '0.1', class: "forms", class: "form-control", size: "60" %>時間
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <%= f.submit "更新", class: "btn content_btn btn_margin_top"%>
     <% end %>
 </div>
