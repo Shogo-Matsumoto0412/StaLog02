@@ -1,3 +1,10 @@
+<div class="field_index_form">
+    <%= form_with model: @field do |f| %>
+        <%= f.text_field :title, placeholder: "分野登録"%>
+        <%= f.submit "登録", class: "btn content_btn btn_margin_left" %>
+    <% end %>
+</div>
+
 <% @fields.each do |field| %>
     <% if field.user_id == current_user.id %>
         <% if current_user.posts.find_by(field_content: field.title) %>
@@ -25,9 +32,3 @@
         <% end %>
     <% end %>
 <% end %>
-<div class="field_index_form">
-    <%= form_with model: @field do |f| %>
-        <%= f.text_field :title, placeholder: "分野"%>
-        <%= f.submit "登録", class: "btn content_btn btn_margin_left" %>
-    <% end %>
-</div>
