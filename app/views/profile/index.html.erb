@@ -1,14 +1,14 @@
 <div class="posts_index_searchs">
     <div class="search_word">
         <%= search_form_for @search do |f| %>
-            <%= f.search_field :name_cont %>
-            <%= f.submit "名前検索", class: "btn content_btn btn_margin_left"%>
+            <%= f.search_field :name_cont, placeholder: "名前" %>
+            <%= f.submit "検索", class: "btn content_btn btn_margin_left"%>
         <% end %>
     </div>
     <div class="search_tag">
         <%= search_form_for @search2 do |f| %>
-            <%= f.search_field :goal_cont %>
-            <%= f.submit "目標検索", class: "btn content_btn btn_margin_left"%>
+            <%= f.search_field :goal_cont, placeholder: "目標" %>
+            <%= f.submit "検索", class: "btn content_btn btn_margin_left"%>
         <% end %>
     </div>
 </div>
