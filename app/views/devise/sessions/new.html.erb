@@ -1,22 +1,24 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.text_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control", style: "width: 350px;" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, placeholder: "パスワード", class: "form-control", style: "width: 350px;" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+<div class="posts_new_forms_wrapper">
+  <h2>ログイン</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <table class="form-table">
+      <tbody>
+        <tr>
+            <th>メールアドレス</th>
+            <td>
+                <%= f.text_field :email, autofocus: true, class: "form-control", size: "60" %>
+            </td>
+        </tr>
+        <tr>
+            <th>パスワード</th>
+            <td>
+                <%= f.password_field :password, class: "form-control", size: "60" %>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+    <%= f.submit "ログイン", class: "btn content_btn btn_margin_top"%>
+  <% end %>
+</div>
 
 <%= render "devise/shared/links" %>

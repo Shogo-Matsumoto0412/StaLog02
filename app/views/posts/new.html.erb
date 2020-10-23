@@ -1,45 +1,46 @@
 <div class="posts_new_forms_wrapper">
+<h2>新規投稿</h2>
     <%= form_with model: @post do |f| %>
         <table class="form-table">
             <tbody>
                 <tr>
                     <th>内容・テーマ</th>
                     <td>
-                        <%= f.text_area :teaching_materials, class: "forms", size: "60" %>
+                        <%= f.text_area :teaching_materials, class: "forms", class: "form-control", size: "60" %>
                     </td>
                 </tr>
                 <tr>
                     <th>実行したこと</th>
                     <td>
-                        <%= f.text_area :post_content, class: "forms", size: "60" %>
+                        <%= f.text_area :post_content, class: "forms", class: "form-control", size: "60" %>
                     </td>
                 </tr>
                 <tr>
                     <th>改善点</th>
                     <td>
-                        <%= f.text_area :improvement_points, class: "forms", size: "60" %>
+                        <%= f.text_area :improvement_points, class: "forms", class: "form-control", size: "60" %>
                     </td>
                 </tr>
                 <tr>
                     <th>分野</th>
                     <td>
-                        <%= f.select :field_content, @fields.map{|field|[field.title, field.title]}, class: "forms", size: "60" %>
+                        <%= f.select :field_content, @fields.map{|field|[field.title, field.title]}, class: "forms", class: "form-control", size: "60" %>
                     </td>
                 </tr>
                 <tr>
                     <th>学習時間</th>
                     <td>
-                        <%= f.number_field :count_hour, step: '0.1', class: "forms", size: "60" %>時間
+                        <%= f.number_field :count_hour, step: '0.1', class: "forms", class: "form-control", size: "60" %>時間
                     </td>
                 </tr>
                 <tr>
                     <th>学習日時</th>
                     <td>
-                        <%= f.datetime_select :start_time, class: "forms", size: "60" %>
+                        <%= f.datetime_select :start_time, class: "forms", class: "form-control", size: "60" %>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <%= f.submit "投稿", class: "btn content_btn"%>
+        <%= f.submit "投稿", class: "btn content_btn btn_margin_top"%>
     <% end %>
 </div>
