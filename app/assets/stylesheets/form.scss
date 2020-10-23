@@ -180,3 +180,24 @@
 .form_margin_bottom{
     margin-bottom: 24px;
 }
+
+.login_form_wrapper>p>a{
+    display: inline-block;
+    background-color: #00CC99;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.login_form_wrapper{
+    text-align: center;
+}
+
+.forms_btns_wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.btns_margin_left{
+    margin-left: 16px;
+}
