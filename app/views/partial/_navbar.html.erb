@@ -12,7 +12,9 @@
       <% if user_signed_in? %>
         <li class="nav-item navbar_flex icon">
           <i class="fas fa-plus icon"></i>
-          <%= link_to "新規投稿", new_post_path, class: "nav-link text-white" %>
+          <div>
+            <%= link_to "新規投稿", new_post_path, class: "nav-link text-white" %>
+          </div>
         </li>
         <li class="nav-item navbar_flex icon">
           <i class="fas fa-user icon user_search"></i>
