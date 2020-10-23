@@ -20,6 +20,12 @@
             <%= link_to "ユーザー検索", users_path, class: "nav-link text-white" %>
           </div>
         </li>
+        <li class="nav-item navbar_flex icon">
+          <i class="fas fa-book icon"></i>
+          <div class="navbar_usersearch icon">
+            <%= link_to "分野一覧", fields_path, class: "nav-link text-white" %>
+          </div>
+        </li>
         <li class="nav-item icon">
           <%= link_to profile_path(current_user.id), class: "nav-link text-white" do %>
             <img src="<%= current_user.profile_image%>" class="navbar_icon_image icon">
