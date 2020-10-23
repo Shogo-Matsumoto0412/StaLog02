@@ -1,5 +1,7 @@
 <div class="posts_new_forms_wrapper">
-  <h2>新規登録</h2>
+  <div class="field_name_wrapper form_margin_bottom">
+    <h1 class="field_name">編集</h1>
+  </div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
