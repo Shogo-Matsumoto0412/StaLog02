@@ -6,11 +6,6 @@
     </div>
     <%# コメントフォーム %>
     <div class="posts_show_comment_wrapper">
-        <% if @post.user.id == current_user.id %>
-            <p class="comment_top"><i class="fas fa-comments"></i>コメント</p>
-        <% else %>
-            <p class="comment_top another_user"><i class="fas fa-comments"></i>コメント</p>
-        <% end %>
         <% @comments.each do |comment| %>
             <div class="comment_content_wrapper">
                 <div>
@@ -40,11 +35,26 @@
             </div>
         <% end %>
         <div class="comment_form">
-            <%= form_with model:[@post, @comment], method: :post do |f| %>
-                <div class="comment_textarea_wrapper"><%= f.text_area :content, placeholder: "コメントする", rows: "8", cols: "80", class: "comment_textarea" %></div>
-                <div><%= f.hidden_field :post_id, value: @post.id %></div>
-                <div><%= f.submit "送信", class: "btn content_btn"%></div>
-            <% end %>
+            <div class="posts_new_forms_wrapper">
+                <%= form_with model:[@post, @comment], method: :post do |f| %>
+                    <table class="form-table">
+                        <tbody>
+                            <tr>
+                                <% if @post.user.id == current_user.id %>
+                                    <th><i class="fas fa-comments"></i>コメント</th>
+                                <% else %>
+                                    <th class="another_user"><i class="fas fa-comments"></i>コメント</th>
+                                <% end %>
+                                <td>
+                                    <%= f.hidden_field :post_id, value: @post.id %>
+                                    <%= f.text_area :content, class: "forms", class: "form-control", size: "60" %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <%= f.submit "送信", class: "btn content_btn btn_margin_top"%>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>
