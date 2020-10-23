@@ -1,0 +1,12 @@
+ja:
+  errors:
+    messages:
+      not_saved:
+        one: "メールの送信に失敗しました"
+  activerecord:
+    attributes:
+      user:
+        name: "お名前"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        email: "メールアドレス"
