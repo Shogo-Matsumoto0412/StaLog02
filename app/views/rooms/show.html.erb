@@ -24,45 +24,47 @@
             <%= f.submit "投稿", class: "btn content_btn btn_margin_left" %>
         <% end %>
     </div>
-    <div class="dm_contents_wrapper">
-        <% if @messages.present? %>
-            <% @messages.each do |m| %>
-                <% if m.user.id == current_user.id %>
-                    <div class="dm_content">
-                        <div>
-                            <img src="<%= m.user.profile_image %>" class="post_icon_image" >
-                            <div class="dm_profile">
-                                <%= m.user.name %>
-                            </div>
-                        </div>
-                        <div class="dm_message">
-                            <p class="dm_message_text icon"><%= m.message %></p>
-                            <div>
-                                <%= link_to "/messages/#{m.id}", method: :delete do %>
-                                    <i class="fas fa-trash-alt"></i>
-                                <% end %>
-                            </div>
+</div>
+<% if @messages.present? %>
+    <% @messages.each do |m| %>
+        <% if m.user.id == current_user.id %>
+            <div class="dm_current_wrapper">
+                <div class="dm_content">
+                    <div>
+                        <img src="<%= m.user.profile_image %>" class="post_icon_image" >
+                        <div class="dm_profile">
+                            <%= m.user.name %>
                         </div>
                     </div>
-                <% else %>
-                    <div class="dm_content">
+                    <div class="dm_message">
+                        <p class="dm_message_text icon"><%= m.message %></p>
                         <div>
-                            <img src="<%= m.user.profile_image %>" class="post_icon_image" >
-                            <div class="dm_profile another_user">
-                                <%= m.user.name %>
-                            </div>
-                        </div>
-                        <div class="dm_message">
-                            <p class="dm_message_text another_user"><%= m.message %></p>
-                            <% if m.user.id == current_user.id%>
-                                <%= link_to "/messages/#{m.id}", method: :delete do %>
-                                    <i class="fas fa-trash-alt"></i>
-                                <% end %>
+                            <%= link_to "/messages/#{m.id}", method: :delete do %>
+                                <i class="fas fa-trash-alt"></i>
                             <% end %>
                         </div>
                     </div>
-                <% end %>
-            <% end %>
+                </div>
+            </div>
+        <% else %>
+            <div class="dm_another_wrapper">
+                <div class="dm_content">
+                    <div>
+                        <img src="<%= m.user.profile_image %>" class="post_icon_image" >
+                        <div class="dm_profile another_user">
+                            <%= m.user.name %>
+                        </div>
+                    </div>
+                    <div class="dm_message">
+                        <p class="dm_message_text another_user"><%= m.message %></p>
+                        <% if m.user.id == current_user.id%>
+                            <%= link_to "/messages/#{m.id}", method: :delete do %>
+                                <i class="fas fa-trash-alt"></i>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
         <% end %>
-    </div>
-</div>
+    <% end %>
+<% end %>
