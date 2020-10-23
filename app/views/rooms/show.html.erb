@@ -18,11 +18,22 @@
 <% end %>
 <div class="dm_wrapper">
     <div class="dm_forms">
-        <%= form_with model: @message do |f| %>
-            <%= f.text_field :message, placeholder: "メッセージを入力して下さい", size: 40 %>
-            <%= f.hidden_field :room_id, value: @room.id %>
-            <%= f.submit "投稿", class: "btn content_btn btn_margin_left" %>
-        <% end %>
+        <div class="posts_new_forms_wrapper">
+            <%= form_with model: @message do |f| %>
+                <table class="form-table">
+                    <tbody>
+                        <tr>
+                            <th>メッセージ</th>
+                            <td>
+                                <%= f.text_area :message, class: "forms", class: "form-control", size: "60" %>
+                                <%= f.hidden_field :room_id, value: @room.id %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <%= f.submit "投稿", class: "btn content_btn btn_margin_left btn_margin_top" %>
+            <% end %>
+        </div>
     </div>
 </div>
 <% if @messages.present? %>
