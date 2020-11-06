@@ -1,6 +1,6 @@
 # README
 
-<img src="/assets/images/readme_image1.png">
+<img width="1680" alt="readme_image1" src="https://user-images.githubusercontent.com/66903388/98378863-ee90af80-2089-11eb-863d-74f9120a98d1.png">
 
 * Ruby version
 
