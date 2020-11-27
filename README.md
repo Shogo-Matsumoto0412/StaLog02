@@ -1,5 +1,5 @@
 # StaLog
-<img width="1680" alt="readme_image1" src="https://user-images.githubusercontent.com/66903388/98378863-ee90af80-2089-11eb-863d-74f9120a98d1.png">
+<img width="1680" alt="スクリーンショット 2020-11-27 16 24 11" src="https://user-images.githubusercontent.com/66903388/100459452-d5b76f00-3108-11eb-8a28-46f21388c04d.png">
 
 # 概要
 「コロナ期間の自己成長」<br>
