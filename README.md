@@ -34,6 +34,8 @@
 ・CSS（Sass）
 ・Git, Github
 
+# ページ説明
 ## category/show
 <img width="1679" alt="スクリーンショット 2020-11-29 23 25 54" src="https://user-images.githubusercontent.com/66903388/100544726-ff080480-329a-11eb-8ac6-d996ba26c691.png">
+分野の勉強時間を可視化するために折れ線グラフを使用しました。
 
