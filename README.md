@@ -1,4 +1,4 @@
-# StaLo
+# StaLog
 ## home
 <img width="1679" alt="スクリーンショット 2020-11-29 23 25 38" src="https://user-images.githubusercontent.com/66903388/100544660-a46ea880-329a-11eb-873d-01936230152a.png">
 
@@ -33,3 +33,7 @@
 ・HTML
 ・CSS（Sass）
 ・Git, Github
+
+## category/show
+<img width="1679" alt="スクリーンショット 2020-11-29 23 25 54" src="https://user-images.githubusercontent.com/66903388/100544726-ff080480-329a-11eb-8ac6-d996ba26c691.png">
+
