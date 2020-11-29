@@ -47,4 +47,4 @@
 <img width="1679" alt="スクリーンショット 2020-11-29 23 26 36" src="https://user-images.githubusercontent.com/66903388/100544929-75593680-329c-11eb-8206-64f0646fb61c.png">
 ## dmページ
 このアプリにｄｍ機能をつけることで気になったり話してみたい人と話して勉強仲間になることができます。
-<img width="1679" alt="スクリーンショット 2020-11-29 23 26 36" src="https://user-images.githubusercontent.com/66903388/100544929-75593680-329c-11eb-8206-64f0646fb61c.png">
+<img width="1679" alt="スクリーンショット 2020-11-29 23 27 10" src="https://user-images.githubusercontent.com/66903388/100545116-a6863680-329d-11eb-8772-cdc1a529a2af.png">
