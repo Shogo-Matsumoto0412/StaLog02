@@ -55,5 +55,5 @@
 ## ログイン、新規登録ページ
 <img width="1679" alt="スクリーンショット 2020-11-29 23 28 11" src="https://user-images.githubusercontent.com/66903388/100546668-e5b88580-32a5-11eb-9e9c-0be4acdb1e92.png">
 <img width="1679" alt="スクリーンショット 2020-11-29 23 28 16" src="https://user-images.githubusercontent.com/66903388/100546674-eea95700-32a5-11eb-8b91-e679231b2380.png">
-## 新規投稿ページ
+## 新規投稿
 <img width="1679" alt="スクリーンショット 2020-11-29 23 27 47" src="https://user-images.githubusercontent.com/66903388/100546712-26b09a00-32a6-11eb-8d08-9cd5ab5f4ccb.png">
