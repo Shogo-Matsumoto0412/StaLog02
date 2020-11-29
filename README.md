@@ -38,4 +38,7 @@
 ## category/show
 <img width="1679" alt="スクリーンショット 2020-11-29 23 25 54" src="https://user-images.githubusercontent.com/66903388/100544726-ff080480-329a-11eb-8ac6-d996ba26c691.png">
 分野の勉強時間を可視化するために折れ線グラフを使用しました。
-
+## profile/show
+<img width="1679" alt="スクリーンショット 2020-11-29 23 26 15" src="https://user-images.githubusercontent.com/66903388/100544782-75a50200-329b-11eb-808b-31a1fb09d3b2.png">
+カレンダーにその日勉強した分野と時間を表示することで自分がどれだけ勉強しているかをわかりやすくしています。
+また、自分が投稿した一覧で見られるため、日記的に自分の勉強のログを振り返られるようにしています。
