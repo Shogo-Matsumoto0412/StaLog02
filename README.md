@@ -52,3 +52,6 @@
 名前や目標で検索することで同じ目標を持っている人や友達と繋がれます。
 <img width="1679" alt="スクリーンショット 2020-11-29 23 27 40" src="https://user-images.githubusercontent.com/66903388/100545172-f533d080-329d-11eb-91a7-06d39e0ebca8.png">
 <img width="1680" alt="スクリーンショット 2020-11-29 23 55 56" src="https://user-images.githubusercontent.com/66903388/100545293-7db27100-329e-11eb-8b56-2f6538ede9b9.png">
+## ログイン、新規登録ページ
+<img width="1679" alt="スクリーンショット 2020-11-29 23 28 11" src="https://user-images.githubusercontent.com/66903388/100546668-e5b88580-32a5-11eb-9e9c-0be4acdb1e92.png">
+<img width="1679" alt="スクリーンショット 2020-11-29 23 28 16" src="https://user-images.githubusercontent.com/66903388/100546674-eea95700-32a5-11eb-8b91-e679231b2380.png">
