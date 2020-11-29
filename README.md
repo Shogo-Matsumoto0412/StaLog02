@@ -1,5 +1,6 @@
-# StaLog
-<img width="1680" alt="スクリーンショット 2020-11-27 16 24 11" src="https://user-images.githubusercontent.com/66903388/100459452-d5b76f00-3108-11eb-8a28-46f21388c04d.png">
+# StaLo
+## home
+<img width="1679" alt="スクリーンショット 2020-11-29 23 25 38" src="https://user-images.githubusercontent.com/66903388/100544660-a46ea880-329a-11eb-873d-01936230152a.png">
 
 # 概要
 「コロナ期間の自己成長」<br>
