@@ -51,3 +51,4 @@
 ## ユーザー検索
 名前や目標で検索することで同じ目標を持っている人や友達と繋がれます。
 <img width="1679" alt="スクリーンショット 2020-11-29 23 27 40" src="https://user-images.githubusercontent.com/66903388/100545172-f533d080-329d-11eb-91a7-06d39e0ebca8.png">
+<img width="1680" alt="スクリーンショット 2020-11-29 23 55 56" src="https://user-images.githubusercontent.com/66903388/100545293-7db27100-329e-11eb-8b56-2f6538ede9b9.png">
