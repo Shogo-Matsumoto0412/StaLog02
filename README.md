@@ -48,3 +48,6 @@
 ## dmページ
 このアプリにｄｍ機能をつけることで気になったり話してみたい人と話して勉強仲間になることができます。
 <img width="1679" alt="スクリーンショット 2020-11-29 23 27 10" src="https://user-images.githubusercontent.com/66903388/100545116-a6863680-329d-11eb-8772-cdc1a529a2af.png">
+## ユーザー検索
+名前や目標で検索することで同じ目標を持っている人や友達と繋がれます。
+<img width="1679" alt="スクリーンショット 2020-11-29 23 27 40" src="https://user-images.githubusercontent.com/66903388/100545172-f533d080-329d-11eb-91a7-06d39e0ebca8.png">
